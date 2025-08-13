@@ -43,7 +43,15 @@
     .btn.primary{background:linear-gradient(180deg,#7aa2ff,#5c8df7);border-color:#5c8df7;color:#08122b}
     .grid{display:grid;gap:20px}
     @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card{background:linear-gradient(180deg,rgba(18,25,53,.8),rgba(18,25,53,.5));backdrop-filter:blur(6px);border:1px solid #24315d;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .card{
+      background:linear-gradient(180deg,rgba(18,25,53,.8),rgba(18,25,53,.5));
+      backdrop-filter:blur(6px);border:1px solid #24315d;border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow)
+    }
+    /* ritmo vertical consistente dentro de cada card */
+    .card h2,.card h3,.card p,.card ul,.card .stack,.card .caption{margin:0}
+    .card > * + *{margin-top:12px}
+
     .muted{color:var(--muted)}
     .caption{font-size:13px;color:#a9b7e6}
     .section-h{font-size:22px;margin:6px 0 12px}
@@ -77,20 +85,13 @@
 
     /* ===== HERO (fondo en ::before, fade inferior en ::after) ===== */
     header.hero{
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid #1c2550;
+      position: relative; overflow: hidden; border-bottom: 1px solid #1c2550;
       min-height: clamp(420px, 62vh, 560px);
-      display: flex;
-      align-items: flex-start;
-      padding-top: 25px;
+      display: flex; align-items: flex-start; padding-top: 25px;
     }
     .top + header.hero .container { padding-top: 8px; }
 
-    .hero-inner {
-      position: relative; z-index: 1;
-      display: grid; gap: 20px; align-items: center; margin-top: 0;
-    }
+    .hero-inner { position: relative; z-index: 1; display: grid; gap: 20px; align-items: center; margin-top: 0; }
     @media(min-width:900px){.hero-inner{grid-template-columns:1.2fr .8fr}}
 
     header.hero::before{
@@ -123,6 +124,9 @@
     .card .cred a{color:var(--brand);text-decoration:none}
     .card .cred a:hover{text-decoration:underline}
 
+    /* ====== Calidad de anclado (no tapa el nav al saltar a secciones) ====== */
+    section{scroll-margin-top:calc(var(--navH) + 14px)}
+
     /* ====== Responsive ====== */
 
     /* Menú móvil (hamburguesa) */
@@ -151,13 +155,30 @@
       .subtitle { font-size: clamp(15px, 4.2vw, 20px); }
     }
 
-    /* Móviles medianos */
+    /* Móviles medianos: cards equilibrados y 1 columna */
     @media (max-width: 680px) {
       .btn { padding: 10px 14px; }
       .btn.small { font-size: 13px; padding: 8px 10px; }
-      .stack { gap: 8px; }
-      .stack .btn { flex: 1 1 150px; justify-content: center; }
-      #proyecto-diagrama img { height: auto; max-height: 260px; }
+      .stack { gap: 10px; }
+
+      /* 1 columna para que todo respire bien */
+      .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr !important; }
+
+      /* Cards con padding simétrico y contenido centrado */
+      .card{
+        padding:18px; display:flex; flex-direction:column; justify-content:center;
+      }
+      .card h3{margin-bottom:8px; font-size:18px}
+      .card p.muted{line-height:1.45}
+
+      /* Listas un poco más compactas */
+      .list{gap:6px}
+
+      /* Menos aire entre secciones */
+      section{margin-top:20px !important}
+
+      /* Imagen de arquitectura ajustada */
+      #proyecto-diagrama img { height:auto; max-height:260px; }
     }
 
     /* Móviles chicos */
@@ -167,11 +188,24 @@
       .avatar { width: 64px; height: 64px; }
       .title { font-size: 26px; }
       .container { padding: 14px; }
+      .card{padding:16px}
+      .card p.muted{font-size:14px}
+    }
+
+    /* Footer prolijo */
+    .foot{
+      display:flex; gap:10px; justify-content:space-between; align-items:center;
+      border-top:1px solid #1c2550; padding:18px 0; margin-top:28px; font-size:14px;
+    }
+
+    /* Respeto a usuarios que prefieren menos animación */
+    @media (prefers-reduced-motion: reduce){
+      .btn:hover, .card:hover{transform:none; box-shadow:var(--shadow)}
     }
   </style>
 </head>
 <body>
-  <nav class="top">
+  <nav class="top" aria-label="Barra de navegación">
     <div class="container nav-inner">
       <a class="brand" href="#"><span class="logo">MF</span><span>Matías Formoso</span></a>
 
