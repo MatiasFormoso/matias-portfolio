@@ -48,6 +48,8 @@
     }
     .card h2,.card h3,.card p,.card ul,.card .stack,.card .caption{margin:0}
     .card > * + *{margin-top:12px}
+    /* más aire para botones dentro de cards */
+    .card .stack{margin-top:16px}
 
     .muted{color:var(--muted)}
     .caption{font-size:13px;color:#a9b7e6}
@@ -63,7 +65,7 @@
     .nav-actions{display:flex; gap:16px; align-items:center;}
     .btn.small{padding:8px 12px;font-size:14px}
 
-    /* SUBHERO con wrapper .container (mismo aire lateral que el index) */
+    /* SUBHERO con wrapper .container */
     header.subhero{
       border-bottom:1px solid #1c2550;
       padding-top:25px;
@@ -72,11 +74,11 @@
     .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
     .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 
-    /* Media block como el diagrama del index */
+    /* Media block */
     .media{border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38; box-shadow:var(--shadow)}
     .media img{width:100%; height:auto; object-fit:contain; background:#0e1a38;}
 
-    /* Responsive idéntico al index */
+    /* Responsive como el index */
     @media (max-width: 900px) {
       .container { padding: 16px; }
     }
@@ -111,7 +113,7 @@
     </div>
   </nav>
 
-  <!-- SUBHERO (con .container ADENTRO como en el index) -->
+  <!-- SUBHERO -->
   <header class="subhero">
     <div class="container">
       <h1 class="title">Pipeline MP4 — Detalle del caso</h1>
@@ -177,7 +179,6 @@
   <footer class="container">
     <div class="foot">
       <span>© <span id="y"></span> Matías Formoso</span>
-      <span class="muted">Mismo estilo visual que el sitio principal.</span>
     </div>
   </footer>
 
