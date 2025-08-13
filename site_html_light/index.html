@@ -23,7 +23,6 @@
       font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
       position:relative;
     }
-    /* overlay sutil para dar profundidad, sin cortes */
     body::before{
       content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
       background:
@@ -48,7 +47,6 @@
       backdrop-filter:blur(6px);border:1px solid #24315d;border-radius:var(--radius);
       padding:22px;box-shadow:var(--shadow)
     }
-    /* ritmo vertical consistente dentro de cada card */
     .card h2,.card h3,.card p,.card ul,.card .stack,.card .caption{margin:0}
     .card > * + *{margin-top:12px}
 
@@ -59,19 +57,14 @@
     .list li{list-style:none;padding-left:0}
     .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.45)}
 
-    /* ===== NAV fijo ===== */
+    /* NAV */
     nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,16,32,.85),rgba(11,16,32,.45));border-bottom:1px solid #1c2550}
     .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:10px 0;height:var(--navH)}
     .nav-links{display:flex; gap:16px; align-items:center;}
     .nav-links a{margin-left:0;color:#cfe0ff}
     .btn.small{padding:8px 12px;font-size:14px}
     .brand{display:flex;align-items:center;gap:10px;color:#e7ecff;font-weight:700;letter-spacing:.2px}
-    .logo{width:28px;height:28px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
-          background:linear-gradient(180deg,#7aa2ff,#5c8df7);color:#08122b;font-weight:800;box-shadow:var(--shadow);font-size:12px}
-
-    /* botón hamburguesa (oculto en desktop) */
-    .nav-toggle{display:none; position:relative; width:38px; height:34px; border:1px solid #24315d;
-      border-radius:10px; background:rgba(122,162,255,.08); cursor:pointer}
+    .nav-toggle{display:none; position:relative; width:38px; height:34px; border:1px solid #24315d;border-radius:10px; background:rgba(122,162,255,.08); cursor:pointer}
     .nav-toggle span{position:absolute; left:8px; right:8px; height:2px; background:#cfe0ff; border-radius:2px}
     .nav-toggle span:nth-child(1){top:10px}
     .nav-toggle span:nth-child(2){top:16px}
@@ -83,17 +76,15 @@
     .step{display:flex;gap:12px;align-items:flex-start}
     .step .n{min-width:28px;height:28px;border-radius:50%;display:inline-flex;justify-content:center;align-items:center;background:#1e2a52;border:1px solid #2b3a6a;color:#cfe0ff;font-weight:700}
 
-    /* ===== HERO (fondo en ::before, fade inferior en ::after) ===== */
+    /* HERO */
     header.hero{
       position: relative; overflow: hidden; border-bottom: 1px solid #1c2550;
       min-height: clamp(420px, 62vh, 560px);
       display: flex; align-items: flex-start; padding-top: 25px;
     }
     .top + header.hero .container { padding-top: 8px; }
-
     .hero-inner { position: relative; z-index: 1; display: grid; gap: 20px; align-items: center; margin-top: 0; }
     @media(min-width:900px){.hero-inner{grid-template-columns:1.2fr .8fr}}
-
     header.hero::before{
       content:""; position:absolute; inset:0; z-index:0;
       background-image: linear-gradient(120deg, rgba(11,16,32,.78), rgba(11,16,32,.52)), url('./assets/hero.jpg');
@@ -109,7 +100,7 @@
     .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
     .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 
-    /* Imagen de arquitectura con tamaño controlado */
+    /* Diagrama */
     #proyecto-diagrama .media{
       border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38;
       box-shadow:var(--shadow);
@@ -118,20 +109,11 @@
       width:100%; height:360px; object-fit:contain; background:#0e1a38;
     }
 
-    /* Certificaciones: enlace de credencial */
-    .card .cred{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-weight:600}
-    .card .cred small{color:#a9b7e6;font-weight:500}
-    .card .cred a{color:var(--brand);text-decoration:none}
-    .card .cred a:hover{text-decoration:underline}
-
-    /* ===== Ajuste visual específico: Contacto con más aire ===== */
     #contacto .card{padding-bottom:28px;}
     #contacto .stack{margin-top:14px;}
-
-    /* ====== Calidad de anclado (no tapa el nav al saltar a secciones) ====== */
     section{scroll-margin-top:calc(var(--navH) + 14px)}
 
-    /* ====== Responsive ====== */
+    /* Responsive */
     @media (max-width: 860px){
       .nav-toggle{display:inline-flex; align-items:center; justify-content:center}
       .nav-inner{position:relative}
@@ -143,23 +125,14 @@
         border:1px solid #24315d; border-radius:14px; box-shadow:var(--shadow);
       }
       .nav-links a{margin:0}
-
       .nav-links.open{display:flex}
       .top + header.hero .container{padding-top:14px}
-
-      /* >>> Fix: alinear el botón "Contacto" dentro del menú hamburguesa sin tocar desktop <<< */
       .nav-links a { display:block; padding:8px 10px; }
       .nav-links .btn.small{
-        display:block;           /* que sea un item de lista completo */
-        width:100%;              /* ocupa el ancho del menú */
-        margin:0;                /* sin desplazamientos raros */
-        text-align:center;       /* centrado del texto del botón */
-        justify-content:center;  /* por si queda inline-flex heredado */
-        padding:10px 12px;       /* padding parejo con los demás */
-        box-sizing:border-box;
+        display:block; width:100%; margin:0; text-align:center; justify-content:center;
+        padding:10px 12px; box-sizing:border-box;
       }
     }
-
     @media (max-width: 900px) {
       .container { padding: 16px; }
       header.hero { min-height: clamp(380px, 56vh, 520px); padding-top: 12px; }
@@ -168,22 +141,18 @@
       .title { font-size: clamp(26px, 8vw, 36px); }
       .subtitle { font-size: clamp(15px, 4.2vw, 20px); }
     }
-
     @media (max-width: 680px) {
       .btn { padding: 10px 14px; }
       .btn.small { font-size: 13px; padding: 8px 10px; }
       .stack { gap: 10px; }
       .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr !important; }
-      .card{
-        padding:18px; display:flex; flex-direction:column; justify-content:center;
-      }
+      .card{ padding:18px; display:flex; flex-direction:column; justify-content:center; }
       .card h3{margin-bottom:8px; font-size:18px}
       .card p.muted{line-height:1.45}
       .list{gap:6px}
       section{margin-top:20px !important}
       #proyecto-diagrama img { height:auto; max-height:260px; }
     }
-
     @media (max-width: 480px) {
       .pill { font-size: 11px; padding: 5px 10px; }
       .badge { font-size: 11px; }
@@ -198,7 +167,6 @@
       display:flex; gap:10px; justify-content:space-between; align-items:center;
       border-top:1px solid #1c2550; padding:18px 0; margin-top:28px; font-size:14px;
     }
-
     @media (prefers-reduced-motion: reduce){
       .btn:hover, .card:hover{transform:none; box-shadow:var(--shadow)}
     }
@@ -209,7 +177,6 @@
     <div class="container nav-inner">
       <a class="brand" href="#"><span>Matías Formoso</span></a>
 
-      <!-- botón hamburguesa (se muestra solo en mobile) -->
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </button>
@@ -255,9 +222,12 @@
           <li>▶ <b>IA aplicada:</b> ASR/NLP y automatizaciones reproducibles con evaluación offline.</li>
         </ul>
         <div class="stack" style="margin-top:14px">
-          <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">APIs</span><span class="badge">Automatización</span>
-          <span class="badge">IA</span><span class="badge">ETL</span><span class="badge">Streamlit</span><span class="badge">Power BI</span>
-          <span class="badge">JIRA</span><span class="badge">Scrum</span><span class="badge">UML</span><span class="badge">Arquitectura</span>
+          <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">APIs</span>
+          <span class="badge">Git</span><span class="badge">GitHub</span>
+          <span class="badge">Automatización</span><span class="badge">IA</span>
+          <span class="badge">ETL</span><span class="badge">Streamlit</span><span class="badge">Power BI</span>
+          <!-- JIRA removido -->
+          <span class="badge">Scrum</span><span class="badge">UML</span><span class="badge">Arquitectura</span>
           <span class="badge">Patrones</span><span class="badge">Estadística</span><span class="badge">Visualización</span><span class="badge">Análisis de negocio</span>
         </div>
       </div>
@@ -292,19 +262,24 @@
       </div>
     </section>
 
-    <!-- PROYECTO DESTACADO -->
+    <!-- PROYECTO DESTACADO - RESUMEN -->
     <section id="proyecto" class="grid cols-2" style="margin-top:20px">
       <div class="card">
-        <h2 class="section-h">Caso · Solución end-to-end orquestada</h2>
-        <p class="muted">Ejemplo de solución integral: orquestación de tareas multimedia con servicios externos, control de errores, compensación de transiciones y recursos optimizados. Enfoque en resiliencia y trazabilidad.</p>
+        <h2 class="section-h">Caso · Pipeline MP4 end-to-end a partir de texto</h2>
+        <p class="muted">
+          De un <code>.txt</code> a <b>MP4, completamente automatico</b>: narración TTS, selección de clips por IA,
+          transiciones suaves, mezcla de música con ducking, subtítulos estilizados y limpieza automática.
+          Arquitectura modular por etapas y control de errores con reintentos.
+        </p>
         <ul class="list" style="margin-top:10px">
-          <li><b>Stack:</b> Python (MoviePy, ffmpeg, pydub), Whisper, ElevenLabs, APIs Pexels, Streamlit.</li>
-          <li><b>Retos:</b> sincronización audio-video, subtítulos limpios, cobertura total de clips, uso eficiente de RAM.</li>
-          <li><b>Soluciones:</b> procesamiento por lotes, ducking de audio, fades suaves, lógica por fragmentos, limpieza automática.</li>
+          <li><b>Stack:</b> Python (MoviePy, ffmpeg, pydub), Whisper, ElevenLabs, API de Pexels, Streamlit, Mistral/Ollama.</li>
+          <li><b>Retos:</b> sincronización audio-video, subtítulos limpios, <b>cobertura 1:1</b> del audio, uso eficiente de RAM.</li>
+          <li><b>Soluciones:</b> procesamiento por lotes, lógica por fragmentos con reintentos, queries por IA local, ducking y fades compensados, limpieza automática.</li>
           <li><b>Estado:</b> MVP funcional con logs claros, configuración por entorno y módulos intercambiables.</li>
         </ul>
         <div class="stack" style="margin-top:12px">
-          <a class="btn primary" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura</a>
+          <a class="btn primary" href="./proyecto.html" target="_blank" rel="noopener">Ver más sobre este proyecto</a>
+          <a class="btn" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura</a>
         </div>
       </div>
 
@@ -312,7 +287,7 @@
         <a href="./assets/arquitectura.png" target="_blank" rel="noopener" class="media">
           <img src="./assets/arquitectura.png" alt="Arquitectura del sistema"/>
         </a>
-        <p class="caption">Arquitectura general del pipeline: entrada de texto → audio → fragmentación → clips → subtítulos → render final.</p>
+        <p class="caption">Entrada .txt → TTS/segmentación → búsqueda de clips → ensamblado → subtítulos → render final.</p>
       </div>
     </section>
 
@@ -333,7 +308,6 @@
         <div class="card">
           <h3>Consultoría puntual</h3>
           <p class="muted">Apoyo técnico para tu proyecto</p>
-          <p class="muted"> </p>
           <ul class="list"><li>• Resumen accionable</li><li>• Próximos pasos</li></ul>
         </div>
       </div>

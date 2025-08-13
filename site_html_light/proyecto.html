@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pipeline MP4 — Detalle del caso | Matías Formoso</title>
+  <meta name="description" content="Detalle del pipeline MP4: de texto a MP4 listo para publicar. Arquitectura, pasos, diferenciadores y mockup de interfaz." />
+  <meta name="author" content="Matías Formoso" />
+  <meta property="og:title" content="Pipeline MP4 — Detalle del caso" />
+  <meta property="og:description" content="Arquitectura por etapas, reintentos, render por lotes, subtítulos y más." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="./assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121935;--muted:#8ea0ca;--text:#e7ecff;--brand:#7aa2ff;
+      --shadow:0 10px 30px rgba(0,0,0,.35);--radius:16px;--navH:56px
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      background:#0b1020; color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      position:relative;
+    }
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background:
+        radial-gradient(1000px 600px at 20% 15%, rgba(122,162,255,.08), rgba(11,16,32,0) 70%),
+        radial-gradient(900px 540px at 85% 10%, rgba(122,162,255,.05), rgba(11,16,32,0) 65%);
+    }
+
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    .badge{display:inline-block;padding:6px 10px;border:1px solid #24315d;border-radius:999px;background:rgba(122,162,255,.06);color:#cfe0ff;font-size:12px}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:12px;border:1px solid #24315d;background:rgba(122,162,255,.08);color:#eaf1ff;font-weight:600;transition:transform .15s, box-shadow .15s; text-decoration:none}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(180deg,#7aa2ff,#5c8df7);border-color:#5c8df7;color:#08122b}
+
+    .grid{display:grid;gap:20px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    .card{
+      background:linear-gradient(180deg,rgba(18,25,53,.8),rgba(18,25,53,.5));
+      backdrop-filter:blur(6px);border:1px solid #24315d;border-radius:var(--radius);
+      padding:22px;box-shadow:var(--shadow)
+    }
+    .card h2,.card h3,.card p,.card ul,.card .stack,.card .caption{margin:0}
+    .card > * + *{margin-top:12px}
+
+    .muted{color:var(--muted)}
+    .caption{font-size:13px;color:#a9b7e6}
+    .section-h{font-size:22px;margin:6px 0 12px}
+    .list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+    .list li{list-style:none;padding-left:0}
+    .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+
+    /* NAV (idéntico al index) */
+    nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,16,32,.85),rgba(11,16,32,.45));border-bottom:1px solid #1c2550}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:10px 0;height:var(--navH)}
+    .brand{display:flex;align-items:center;gap:10px;color:#e7ecff;font-weight:700;letter-spacing:.2px}
+    .nav-actions{display:flex; gap:16px; align-items:center;}
+    .btn.small{padding:8px 12px;font-size:14px}
+
+    /* SUBHERO con wrapper .container (mismo aire lateral que el index) */
+    header.subhero{
+      border-bottom:1px solid #1c2550;
+      padding-top:25px;
+    }
+    .title{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:8px 0}
+    .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+    /* Media block como el diagrama del index */
+    .media{border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38; box-shadow:var(--shadow)}
+    .media img{width:100%; height:auto; object-fit:contain; background:#0e1a38;}
+
+    /* Responsive idéntico al index */
+    @media (max-width: 900px) {
+      .container { padding: 16px; }
+    }
+    @media (max-width: 680px) {
+      .btn { padding: 10px 14px; }
+      .btn.small { font-size: 13px; padding: 8px 10px; }
+      .stack { gap: 10px; }
+      .grid.cols-2 { grid-template-columns: 1fr !important; }
+      .card{ padding:18px; display:flex; flex-direction:column; justify-content:center; }
+      .card h3{margin-bottom:8px; font-size:18px}
+      .card p.muted{line-height:1.45}
+      .list{gap:6px}
+      section{margin-top:20px !important}
+    }
+    @media (max-width: 480px) {
+      .badge { font-size: 11px; }
+      .title { font-size: 26px; }
+      .container { padding: 14px; }
+      .card{padding:16px}
+      .card p.muted{font-size:14px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html"><span>Matías Formoso</span></a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- SUBHERO (con .container ADENTRO como en el index) -->
+  <header class="subhero">
+    <div class="container">
+      <h1 class="title">Pipeline MP4 — Detalle del caso</h1>
+      <p class="subtitle">De texto plano a MP4 listo para publicar, con arquitectura modular, control de errores y estabilidad en render por lotes.</p>
+
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">MoviePy</span><span class="badge">ffmpeg</span>
+        <span class="badge">pydub</span><span class="badge">Whisper</span><span class="badge">ElevenLabs</span>
+        <span class="badge">Pexels API</span><span class="badge">Mistral/Ollama</span><span class="badge">Streamlit</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO -->
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Cómo funciona (4 pasos)</h2>
+        <ul class="list">
+          <li>▶ <b>1) Texto → Audio:</b> TTS estable + segmentación por subtítulos/pausas (Whisper).</li>
+          <li>▶ <b>2) Visual:</b> queries con IA local (Mistral/Ollama) → Pexels API con filtros de duración/aspecto.</li>
+          <li>▶ <b>3) Ensamblado:</b> concatenado por fragmento, transiciones suaves, preserva encuadre.</li>
+          <li>▶ <b>4) Render:</b> mezcla narración+música con ducking, genera .srt/.ass, limpia temporales.</li>
+        </ul>
+        <div class="stack">
+          <a class="btn primary" href="./index.html">Volver al inicio</a>
+          <a class="btn" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura en alta</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="section-h">Diferenciadores técnicos</h2>
+        <ul class="list">
+          <li>Reintentos por fragmento y alternativas de query para asegurar cobertura visual 1:1.</li>
+          <li>Margen adicional para compensar fades y evitar pérdida de segundos visibles.</li>
+          <li>Render por lotes para estabilidad y uso eficiente de RAM/IO.</li>
+          <li>Corrección ortográfica de subtítulos y estilos/CTAs configurables.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:22px">
+      <div class="card">
+        <h2 class="section-h">Arquitectura</h2>
+        <a class="media" href="./assets/arquitectura.png" target="_blank" rel="noopener">
+          <img src="./assets/arquitectura.png" alt="Arquitectura general del pipeline"/>
+        </a>
+        <p class="caption">Etapas: entrada .txt → TTS/segmentación → búsqueda de clips → ensamblado → subtítulos → render.</p>
+      </div>
+    </section>
+
+    <section style="margin-top:22px">
+      <div class="card">
+        <h2 class="section-h">Interfaz (mockup)</h2>
+        <a class="media" href="./assets/ui_mockup_streamlit.jpg" target="_blank" rel="noopener">
+          <img src="./assets/ui_mockup_streamlit.jpg" alt="Mockup de la interfaz en Streamlit: generador de contenido con IA"/>
+        </a>
+        <p class="caption">UI mockup: selección de orquestador, carga de .txt, ejecución automática y opciones de salida.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot">
+      <span>© <span id="y"></span> Matías Formoso</span>
+      <span class="muted">Mismo estilo visual que el sitio principal.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
