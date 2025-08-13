@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matías Formoso — Ingeniería de Sistemas & Software</title>
+  <meta name="description" content="Ingeniería de sistemas y software a medida. Diseño y construyo soluciones que conectan datos, integran servicios y automatizan procesos con foco en calidad, mantenibilidad y resultados." />
+  <meta name="author" content="Matías Formoso" />
+  <meta property="og:title" content="Matías Formoso — Software Engineer" />
+  <meta property="og:description" content="Python • SQL • Integraciones • Arquitectura" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="./assets/preview.png" />
+  <link rel="icon" href="./assets/favicon.png" />
+  <style>
+    :root{
+      --bg:#0b1020;--panel:#121935;--muted:#8ea0ca;--text:#e7ecff;--brand:#7aa2ff;
+      --shadow:0 10px 30px rgba(0,0,0,.35);--radius:16px;--navH:56px
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{
+      background:#0b1020; color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;
+      position:relative;
+    }
+    /* overlay sutil para dar profundidad, sin cortes */
+    body::before{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+      background:
+        radial-gradient(1000px 600px at 20% 15%, rgba(122,162,255,.08), rgba(11,16,32,0) 70%),
+        radial-gradient(900px 540px at 85% 10%, rgba(122,162,255,.05), rgba(11,16,32,0) 65%);
+    }
+
+    img{max-width:100%;display:block}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+
+    .pill{display:inline-block;padding:6px 12px;border:1px solid #24315d;border-radius:999px;background:rgba(122,162,255,.08);color:#cfe0ff;font-size:12px;letter-spacing:.3px; margin-top:0}
+    .badge{display:inline-block;padding:6px 10px;border:1px solid #24315d;border-radius:999px;background:rgba(122,162,255,.06);color:#cfe0ff;font-size:12px}
+    .btn{display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:12px;border:1px solid #24315d;background:rgba(122,162,255,.08);color:#eaf1ff;font-weight:600;transition:transform .15s, box-shadow .15s}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+    .btn.primary{background:linear-gradient(180deg,#7aa2ff,#5c8df7);border-color:#5c8df7;color:#08122b}
+    .grid{display:grid;gap:20px}
+    @media(min-width:900px){.grid.cols-2{grid-template-columns:1fr 1fr} .grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{background:linear-gradient(180deg,rgba(18,25,53,.8),rgba(18,25,53,.5));backdrop-filter:blur(6px);border:1px solid #24315d;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+    .caption{font-size:13px;color:#a9b7e6}
+    .section-h{font-size:22px;margin:6px 0 12px}
+    .list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+    .list li{list-style:none;padding-left:0}
+    .card:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,.45)}
+
+    /* ===== NAV fijo ===== */
+    nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,16,32,.85),rgba(11,16,32,.45));border-bottom:1px solid #1c2550}
+    .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:10px 0;height:var(--navH)}
+    .nav-links{display:flex; gap:16px; align-items:center;}
+    .nav-links a{margin-left:0;color:#cfe0ff}
+    .btn.small{padding:8px 12px;font-size:14px}
+    .brand{display:flex;align-items:center;gap:10px;color:#e7ecff;font-weight:700;letter-spacing:.2px}
+    .logo{width:28px;height:28px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;
+          background:linear-gradient(180deg,#7aa2ff,#5c8df7);color:#08122b;font-weight:800;box-shadow:var(--shadow);font-size:12px}
+
+    /* botón hamburguesa (oculto en desktop) */
+    .nav-toggle{display:none; position:relative; width:38px; height:34px; border:1px solid #24315d;
+      border-radius:10px; background:rgba(122,162,255,.08); cursor:pointer}
+    .nav-toggle span{position:absolute; left:8px; right:8px; height:2px; background:#cfe0ff; border-radius:2px}
+    .nav-toggle span:nth-child(1){top:10px}
+    .nav-toggle span:nth-child(2){top:16px}
+    .nav-toggle span:nth-child(3){top:22px}
+
+    .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid #24315d;box-shadow:var(--shadow)}
+    .profile{display:flex;align-items:center;gap:12px;margin:14px 0 6px}
+    .steps{display:grid;gap:14px;margin-top:12px}
+    .step{display:flex;gap:12px;align-items:flex-start}
+    .step .n{min-width:28px;height:28px;border-radius:50%;display:inline-flex;justify-content:center;align-items:center;background:#1e2a52;border:1px solid #2b3a6a;color:#cfe0ff;font-weight:700}
+
+    /* ===== HERO (fondo en ::before, fade inferior en ::after) ===== */
+    header.hero{
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #1c2550;
+      min-height: clamp(420px, 62vh, 560px);
+      display: flex;
+      align-items: flex-start;
+      padding-top: 25px;
+    }
+    .top + header.hero .container { padding-top: 8px; }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: grid; gap: 20px; align-items: center; margin-top: 0;
+    }
+    @media(min-width:900px){.hero-inner{grid-template-columns:1.2fr .8fr}}
+
+    header.hero::before{
+      content:""; position:absolute; inset:0; z-index:0;
+      background-image: linear-gradient(120deg, rgba(11,16,32,.78), rgba(11,16,32,.52)), url('./assets/hero.jpg');
+      background-size: cover; background-position: center;
+    }
+    header.hero::after{
+      content:""; position:absolute; left:0; right:0; bottom:-1px; height:100px; z-index:0;
+      background:linear-gradient(180deg, rgba(11,16,32,0), rgba(11,16,32,1));
+      pointer-events:none;
+    }
+
+    .title{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:8px 0}
+    .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
+    .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+
+    /* Imagen de arquitectura con tamaño controlado */
+    #proyecto-diagrama .media{
+      border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38;
+      box-shadow:var(--shadow);
+    }
+    #proyecto-diagrama img{
+      width:100%; height:360px; object-fit:contain; background:#0e1a38;
+    }
+
+    /* Certificaciones: enlace de credencial */
+    .card .cred{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-weight:600}
+    .card .cred small{color:#a9b7e6;font-weight:500}
+    .card .cred a{color:var(--brand);text-decoration:none}
+    .card .cred a:hover{text-decoration:underline}
+
+    /* ====== Responsive ====== */
+
+    /* Menú móvil (hamburguesa) */
+    @media (max-width: 860px){
+      .nav-toggle{display:inline-flex; align-items:center; justify-content:center}
+      .nav-inner{position:relative}
+      .nav-links{
+        position:absolute; top:calc(var(--navH) - 6px); right:0;
+        display:none; flex-direction:column; align-items:stretch; gap:10px;
+        padding:12px; width:220px;
+        background:linear-gradient(180deg,rgba(18,25,53,.92),rgba(18,25,53,.85));
+        border:1px solid #24315d; border-radius:14px; box-shadow:var(--shadow);
+      }
+      .nav-links a{margin:0}
+      .nav-links.open{display:flex}
+      .top + header.hero .container{padding-top:14px}
+    }
+
+    /* Tablets y móviles grandes */
+    @media (max-width: 900px) {
+      .container { padding: 16px; }
+      header.hero { min-height: clamp(380px, 56vh, 520px); padding-top: 12px; }
+      .hero-inner { gap: 16px; }
+      .avatar { width: 72px; height: 72px; }
+      .title { font-size: clamp(26px, 8vw, 36px); }
+      .subtitle { font-size: clamp(15px, 4.2vw, 20px); }
+    }
+
+    /* Móviles medianos */
+    @media (max-width: 680px) {
+      .btn { padding: 10px 14px; }
+      .btn.small { font-size: 13px; padding: 8px 10px; }
+      .stack { gap: 8px; }
+      .stack .btn { flex: 1 1 150px; justify-content: center; }
+      #proyecto-diagrama img { height: auto; max-height: 260px; }
+    }
+
+    /* Móviles chicos */
+    @media (max-width: 480px) {
+      .pill { font-size: 11px; padding: 5px 10px; }
+      .badge { font-size: 11px; }
+      .avatar { width: 64px; height: 64px; }
+      .title { font-size: 26px; }
+      .container { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="top">
+    <div class="container nav-inner">
+      <a class="brand" href="#"><span class="logo">MF</span><span>Matías Formoso</span></a>
+
+      <!-- botón hamburguesa (se muestra solo en mobile) -->
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#proyecto">Caso</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a class="btn small" href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO full-width, contenido centrado dentro del container -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="pill">Software Engineer · Arquitectura · Datos · Integraciones</span>
+        <div class="profile">
+          <img class="avatar" src="./assets/perfil.png" alt="Matías Formoso" />
+          <div>
+            <div style="font-weight:700">Matías Agustín Formoso</div>
+            <div class="muted">Software Engineer — arquitectura, datos e integraciones</div>
+          </div>
+        </div>
+        <h1 class="title">Software Engineer — arquitectura, datos e integraciones.</h1>
+        <p class="subtitle">Diseño y construyo soluciones que conectan datos, integran servicios y automatizan procesos con foco en <b>calidad</b>, <b>mantenibilidad</b> y <b>resultados</b>.</p>
+        <div class="stack">
+          <a class="btn primary" href="#servicios">Ver servicios</a>
+          <a class="btn" href="#contacto">Hablemos</a>
+          <a class="btn" href="./assets/CV_Matias_Formoso.pdf" target="_blank" rel="noopener">Descargar CV</a>
+        </div>
+        <p class="caption">Abierto a colaborar en proyectos donde la tecnología simplifique lo importante.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="section-h">Qué hago</h3>
+        <ul class="list">
+          <li>▶ <b>Arquitectura & Sistemas:</b> diseño modular, configuración por entorno, observabilidad.</li>
+          <li>▶ <b>Datos & ETL/BI:</b> ingesta, modelado relacional, SQL robusto y tableros claros.</li>
+          <li>▶ <b>Integraciones & APIs:</b> servicios REST, OAuth2, webhooks y orquestación.</li>
+          <li>▶ <b>Aplicaciones web:</b> MVPs en React/Streamlit para validar rápido.</li>
+          <li>▶ <b>IA aplicada:</b> ASR/NLP y automatizaciones reproducibles con evaluación offline.</li>
+        </ul>
+        <div class="stack" style="margin-top:14px">
+          <span class="badge">Python</span><span class="badge">SQL</span><span class="badge">APIs</span><span class="badge">Automatización</span>
+          <span class="badge">IA</span><span class="badge">ETL</span><span class="badge">Streamlit</span><span class="badge">Power BI</span>
+          <span class="badge">JIRA</span><span class="badge">Scrum</span><span class="badge">UML</span><span class="badge">Arquitectura</span>
+          <span class="badge">Patrones</span><span class="badge">Estadística</span><span class="badge">Visualización</span><span class="badge">Análisis de negocio</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- SERVICIOS -->
+    <section id="servicios" style="margin-top:26px">
+      <h2 class="section-h">Soluciones a medida</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Datos & ETL</h3>
+          <p class="muted">Pipelines reproducibles con logging, validaciones y monitoreo. Modelado relacional y SQL sólido.</p>
+          <ul class="list"><li>• Ingesta/limpieza</li><li>• Orquestación</li><li>• Tableros BI</li></ul>
+        </div>
+        <div class="card">
+          <h3>Integraciones & APIs</h3>
+          <p class="muted">Servicios REST, OAuth2, webhooks y jobs con reintentos. Documentación y tests básicos.</p>
+          <ul class="list"><li>• REST/JSON</li><li>• OAuth2</li><li>• Webhooks</li></ul>
+        </div>
+        <div class="card">
+          <h3>Aplicaciones Web</h3>
+          <p class="muted">MVPs en React/Streamlit para validar ideas rápido con foco en UX simple y performance.</p>
+          <ul class="list"><li>• MVP ágil</li><li>• Auth básica</li><li>• Deploy</li></ul>
+        </div>
+        <div class="card">
+          <h3>IA aplicada</h3>
+          <p class="muted">ASR/NLP, clasificación y automatizaciones. Medición con métricas técnicas.</p>
+          <ul class="list"><li>• Whisper/ASR</li><li>• NLP básico</li><li>• Evaluación offline</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTO DESTACADO -->
+    <section id="proyecto" class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Caso · Solución end-to-end orquestada</h2>
+        <p class="muted">Ejemplo de solución integral: orquestación de tareas multimedia con servicios externos, control de errores, compensación de transiciones y recursos optimizados. Enfoque en resiliencia y trazabilidad.</p>
+        <ul class="list" style="margin-top:10px">
+          <li><b>Stack:</b> Python (MoviePy, ffmpeg, pydub), Whisper, ElevenLabs, APIs Pexels, Streamlit.</li>
+          <li><b>Retos:</b> sincronización audio-video, subtítulos limpios, cobertura total de clips, uso eficiente de RAM.</li>
+          <li><b>Soluciones:</b> procesamiento por lotes, ducking de audio, fades suaves, lógica por fragmentos, limpieza automática.</li>
+          <li><b>Estado:</b> MVP funcional con logs claros, configuración por entorno y módulos intercambiables.</li>
+        </ul>
+        <div class="stack" style="margin-top:12px">
+          <a class="btn primary" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura</a>
+        </div>
+      </div>
+
+      <div class="card" id="proyecto-diagrama">
+        <a href="./assets/arquitectura.png" target="_blank" rel="noopener" class="media">
+          <img src="./assets/arquitectura.png" alt="Arquitectura del sistema"/>
+        </a>
+        <p class="caption">Arquitectura general del pipeline: entrada de texto → audio → fragmentación → clips → subtítulos → render final.</p>
+      </div>
+    </section>
+
+    <!-- MODELOS -->
+    <section id="modelos" style="margin-top:26px">
+      <h2 class="section-h">Modelos de colaboración</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Proyecto cerrado</h3>
+          <p class="muted">Alcance definido, entregables y fecha clara. Ideal para una solución puntual con especificación concreta.</p>
+          <ul class="list"><li>• Documento de alcance</li><li>• Hitos y QA</li><li>• Entrega + handoff</li></ul>
+        </div>
+        <div class="card">
+          <h3>Bolsa mensual</h3>
+          <p class="muted">Capacidad dedicada por horas para evolución continua: mejoras, soporte y pequeñas features.</p>
+          <ul class="list"><li>• SLA acordado</li><li>• Roadmap vivo</li><li>• Reporte mensual</li></ul>
+        </div>
+        <div class="card">
+          <h3>Consultoría puntual</h3>
+          <p class="muted">Sesión técnica para destrabar un problema</p>
+          <ul class="list"><li>• 60–90 min</li><li>• Resumen accionable</li><li>• Próximos pasos</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso" style="margin-top:26px">
+      <h2 class="section-h">Proceso de trabajo</h2>
+      <div class="card steps">
+        <div class="step"><span class="n">1</span><div><b>Explorar</b><br/><span class="muted">Contexto, restricciones y definición del problema.</span></div></div>
+        <div class="step"><span class="n">2</span><div><b>Diseñar</b><br/><span class="muted">Arquitectura y plan técnico con hitos y riesgos.</span></div></div>
+        <div class="step"><span class="n">3</span><div><b>Construir</b><br/><span class="muted">Módulos desacoplados, pruebas y observabilidad.</span></div></div>
+        <div class="step"><span class="n">4</span><div><b>Validar</b><br/><span class="muted">QA funcional, performance y handoff documentado.</span></div></div>
+        <div class="step"><span class="n">5</span><div><b>Iterar</b><br/><span class="muted">Mejoras y métricas, según objetivos de negocio.</span></div></div>
+      </div>
+    </section>
+
+    <!-- PRINCIPIOS -->
+    <section id="principios" style="margin-top:26px">
+      <h2 class="section-h">Principios de ingeniería</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>Calidad</h3>
+          <p class="muted">Logging estructurado, manejo de errores con reintentos, validación de entradas y tiempos máximos por tarea.</p>
+        </div>
+        <div class="card">
+          <h3>Mantenibilidad</h3>
+          <p class="muted">Módulos desacoplados, configuración por entorno, documentación mínima y clara.</p>
+        </div>
+        <div class="card">
+          <h3>Performance</h3>
+          <p class="muted">Procesamiento por lotes, uso eficiente de memoria/IO, medición y profiling antes de optimizar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section id="sobre-mi" style="margin-top:26px">
+      <div class="card">
+        <h2 class="section-h">Sobre mí</h2>
+        <p class="muted">Estudiante avanzado de Ingeniería en Sistemas de Información (Argentina). Me gusta resolver problemas reales con software simple y bien pensado. Aprendo rápido apoyándome en IA y documentación. Busco contextos donde pueda aportar desde lo técnico con visión de producto.</p>
+        <ul class="list" style="margin-top:10px">
+          <li class="kpi"><b>Python + SQL</b> · datos, APIs y automatización</li>
+          <li class="kpi"><b>Video pipeline</b> · IA, ffmpeg, MoviePy, Whisper</li>
+          <li class="kpi"><b>Front rápido</b> · Streamlit/React para MVPs</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CERTIFICACIONES -->
+    <section id="certificaciones" style="margin-top:26px">
+      <h2 class="section-h">Certificaciones</h2>
+      <div class="grid cols-3">
+
+        <div class="card">
+          <h3>SCRUMstudy • Scrum Fundamentals Certified (SFC)</h3>
+          <p class="muted">Enero 2025 · ID: 1063108</p>
+          <p class="caption">Scrum · Metodologías ágiles</p>
+          <div class="cred">
+            <small>Credencial:</small>
+            <a href="https://www.scrumstudy.com/certification/verify?type=SFC&number=1063108" target="_blank" rel="noopener">
+              Verificar SFC
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Santander Open Academy • IA Generativa</h3>
+          <p class="muted">Enero 2025 · ID: OA-2025-0107000725293</p>
+          <p class="caption">Ética en IA · IA generativa · Análisis de sentimiento</p>
+        </div>
+
+        <div class="card">
+          <h3>Google • Foundations: Data, Data, Everywhere</h3>
+          <p class="muted">Enero 2025 · ID: EU5LNJIZLCE7</p>
+          <p class="caption">Hojas de cálculo · Análisis de datos</p>
+          <div class="cred">
+            <small>Credencial:</small>
+            <a href="https://www.coursera.org/account/accomplishments/verify/EU5LNJIZLCE7" target="_blank" rel="noopener">
+              Ver en Coursera
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Google • Ask Questions to Make Data-Driven Decisions</h3>
+          <p class="muted">Febrero 2025 · ID: LO7PWKIPCHK6</p>
+          <p class="caption">Hojas de cálculo · Analítica de datos</p>
+          <div class="cred">
+            <small>Credencial:</small>
+            <a href="https://www.coursera.org/account/accomplishments/verify/LO7PWKIPCHK6" target="_blank" rel="noopener">
+              Ver en Coursera
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Google • Process Data from Dirty to Clean</h3>
+          <p class="muted">Marzo 2025 · ID: DKVHCLLCJXP3</p>
+          <p class="caption">Integridad y limpieza de datos · SQL</p>
+          <div class="cred">
+            <small>Credencial:</small>
+            <a href="https://www.coursera.org/account/accomplishments/verify/DKVHCLLCJXP3" target="_blank" rel="noopener">
+              Ver en Coursera
+            </a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Google • Prepare Data for Exploration</h3>
+          <p class="muted">Marzo 2025 · ID: DIAT2YM7S567</p>
+          <p class="caption">SQL · Hojas de cálculo · Análisis de datos</p>
+          <div class="cred">
+            <small>Credencial:</small>
+            <a href="https://www.coursera.org/account/accomplishments/verify/DIAT2YM7S567" target="_blank" rel="noopener">
+              Ver en Coursera
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" style="margin-top:26px">
+      <div class="card">
+        <h2 class="section-h">Contacto</h2>
+        <p class="muted">¿Tenés una idea o un problema concreto? Enviame un mensaje con una línea de contexto y respuesta ideal.</p>
+        <div class="stack">
+          <a class="btn primary" href="mailto:formosomatiasagustin@gmail.com?subject=Contacto%20desde%20web&body=Hola%20Matias,%20tengo%20esta%20idea...">Email</a>
+          <a class="btn" href="https://wa.me/5493541235829" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn" href="https://www.linkedin.com/in/matías-agustín-formoso-361987290" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot">
+      <span>© <span id="y"></span> Matías Formoso</span>
+      <span class="muted">Hecho a mano con HTML/CSS. Sin frameworks, carga rápida.</span>
+    </div>
+  </footer>
+
+  <script>
+    // año en footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // menú móvil
+    const btn = document.querySelector('.nav-toggle');
+    const links = document.getElementById('nav-links');
+    if (btn && links){
+      btn.addEventListener('click', () => {
+        links.classList.toggle('open');
+        btn.setAttribute('aria-expanded', links.classList.contains('open'));
+      });
+      links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        links.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+      }));
+    }
+  </script>
+</body>
+</html>
