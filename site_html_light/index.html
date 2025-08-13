@@ -143,8 +143,21 @@
         border:1px solid #24315d; border-radius:14px; box-shadow:var(--shadow);
       }
       .nav-links a{margin:0}
+
       .nav-links.open{display:flex}
       .top + header.hero .container{padding-top:14px}
+
+      /* >>> Fix: alinear el botón "Contacto" dentro del menú hamburguesa sin tocar desktop <<< */
+      .nav-links a { display:block; padding:8px 10px; }
+      .nav-links .btn.small{
+        display:block;           /* que sea un item de lista completo */
+        width:100%;              /* ocupa el ancho del menú */
+        margin:0;                /* sin desplazamientos raros */
+        text-align:center;       /* centrado del texto del botón */
+        justify-content:center;  /* por si queda inline-flex heredado */
+        padding:10px 12px;       /* padding parejo con los demás */
+        box-sizing:border-box;
+      }
     }
 
     @media (max-width: 900px) {
@@ -320,7 +333,7 @@
         <div class="card">
           <h3>Consultoría puntual</h3>
           <p class="muted">Apoyo técnico para tu proyecto</p>
-          <p class="muted"> </p>
+          <p class="muted"> </p>
           <ul class="list"><li>• Resumen accionable</li><li>• Próximos pasos</li></ul>
         </div>
       </div>
