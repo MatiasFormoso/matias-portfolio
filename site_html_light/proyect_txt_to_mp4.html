@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pipeline MP4 — Detalle del caso | Matías Formoso</title>
-  <meta name="description" content="Detalle del pipeline MP4: de texto a MP4 listo para publicar. Arquitectura, pasos, diferenciadores y mockup de interfaz." />
+  <meta name="description" content="Detalle del pipeline MP4: de texto a MP4 listo para publicar. Arquitectura, pasos, diferenciadores y captura de la interfaz (MVP)." />
   <meta name="author" content="Matías Formoso" />
   <meta property="og:title" content="Pipeline MP4 — Detalle del caso" />
-  <meta property="og:description" content="Arquitectura por etapas, reintentos, render por lotes, subtítulos y más." />
+  <meta property="og:description" content="Arquitectura por etapas, reintentos, render por lotes, subtítulos e Interfaz MVP." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="./assets/favicon.png" />
   <style>
@@ -48,7 +48,6 @@
     }
     .card h2,.card h3,.card p,.card ul,.card .stack,.card .caption{margin:0}
     .card > * + *{margin-top:12px}
-    /* más aire para botones dentro de cards */
     .card .stack{margin-top:16px}
 
     .muted{color:var(--muted)}
@@ -167,11 +166,17 @@
 
     <section style="margin-top:22px">
       <div class="card">
-        <h2 class="section-h">Interfaz (mockup)</h2>
-        <a class="media" href="./assets/ui_mockup_streamlit.jpg" target="_blank" rel="noopener">
-          <img src="./assets/ui_mockup_streamlit.jpg" alt="Mockup de la interfaz en Streamlit: generador de contenido con IA"/>
+        <h2 class="section-h">Interfaz MVP</h2>
+        <a class="media" href="./assets/ui_streamlit_mvp.png" target="_blank" rel="noopener">
+          <picture>
+            <source srcset="./assets/ui_streamlit_mvp.webp" type="image/webp">
+            <img src="./assets/ui_streamlit_mvp.png"
+                 alt="Interfaz MVP en Streamlit"
+                 width="1919" height="942"
+                 loading="lazy" decoding="async">
+          </picture>
         </a>
-        <p class="caption">UI mockup: selección de orquestador, carga de .txt, ejecución automática y opciones de salida.</p>
+        <p class="caption">Vista de la herramienta: selección de orquestador, carga de .txt, ejecución automática y opciones de salida.</p>
       </div>
     </section>
   </main>
