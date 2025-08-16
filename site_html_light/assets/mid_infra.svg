@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="1600" height="940" viewBox="0 0 1600 940" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bg { fill:#f6f9fc; }
+      .title{ font:800 40px Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:#0b1020; }
+      .subhead{ font:700 14px Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:#334a6b; letter-spacing:.2px; }
+      .boxT{ font:800 22px Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:#0b1020; }
+      .boxP{ font:16px Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:#1a2740; }
+      .legend{ font:18px Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; fill:#334a6b; }
+
+      .box{ rx:18; ry:18; stroke:#9bb5d6; stroke-width:2; filter:url(#ds); }
+      .blue{ fill:#CFE9FF; }
+      .green{ fill:#DBF5E1; }
+
+      .conn{ stroke:#6a84a8; stroke-width:2.5; fill:none; marker-end:url(#arrow); }
+    </style>
+
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto">
+      <path d="M0,0 10,5 0,10Z" fill="#6a84a8"/>
+    </marker>
+
+    <filter id="ds" x="-12%" y="-12%" width="124%" height="124%">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .22 0"/>
+      <feBlend in="SourceGraphic" in2="b" mode="normal"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="940"/>
+  <text class="title" x="80" y="90">Arquitectura · Market Indicators Dashboard</text>
+
+  <!-- SUBHEADERS -->
+  <text class="subhead" x="80" y="122">ARQUITECTURA — datos e interacción</text>
+  <text class="subhead" x="80" y="562">SOPORTE — configuración, despliegue y observabilidad</text>
+
+  <!-- Columnas: x=120, 560, 1000 | Filas: y=160, 380, 600 | w=360 h=150 -->
+
+  <!-- Fila 1 -->
+  <rect class="box green" x="120"  y="160" width="360" height="150"/>
+  <text class="boxT" x="140" y="190">Fuentes de datos (APIs)</text>
+  <text class="boxP" x="140" y="218">• FMP API — Precios y market data</text>
+  <text class="boxP" x="140" y="242">• CoinGecko API — Histórico e intradía</text>
+
+  <rect class="box blue"  x="560"  y="160" width="360" height="150"/>
+  <text class="boxT" x="580" y="190">GitHub Actions (cron)</text>
+  <text class="boxP" x="580" y="218">Workflows hourly / daily</text>
+  <text class="boxP" x="580" y="242">Inyecta secrets</text>
+
+  <rect class="box blue"  x="1000" y="160" width="360" height="150"/>
+  <text class="boxT" x="1020" y="190">ETL en Python</text>
+  <text class="boxP" x="1020" y="218">fetch → validar → transformar</text>
+  <text class="boxP" x="1020" y="242">checks básicos • upsert</text>
+
+  <!-- Fila 2 (Postgres con cilindro) -->
+  <g transform="translate(120,380)" filter="url(#ds)">
+    <rect x="0" y="0" width="360" height="150" fill="none"/>
+    <ellipse cx="180" cy="30" rx="160" ry="20" fill="#bfe0ff" stroke="#9bb5d6" stroke-width="2"/>
+    <rect   x="20"  y="30"  width="320" height="100" fill="#bfe0ff" stroke="#9bb5d6" stroke-width="2"/>
+    <path d="M20,130 q160,24 320,0" fill="none" stroke="#9bb5d6" stroke-width="2"/>
+    <text class="boxT" x="32"  y="66">PostgreSQL (Neon)</text>
+    <text class="boxP" x="32"  y="92">Tablas: precios, histórico</text>
+    <text class="boxP" x="32"  y="116">Clave: símbolo + ts + granularidad</text>
+  </g>
+
+  <rect class="box blue"  x="560"  y="380" width="360" height="150"/>
+  <text class="boxT" x="580" y="410">App (Streamlit en Render)</text>
+  <text class="boxP" x="580" y="438">KPIs, línea/área &amp; velas OHLC</text>
+  <text class="boxP" x="580" y="462">Controles: activo, rango, granularidad</text>
+
+  <rect class="box green" x="1000" y="380" width="360" height="150"/>
+  <text class="boxT" x="1020" y="410">Usuarios</text>
+  <text class="boxP" x="1020" y="438">Dashboard en vivo</text>
+  <text class="boxP" x="1020" y="462">Enlace público</text>
+
+  <!-- Fila 3 -->
+  <rect class="box blue"  x="120"  y="600" width="360" height="150"/>
+  <text class="boxT" x="140" y="630">Secrets / Configuración</text>
+  <text class="boxP" x="140" y="658">DATABASE_URL • FMP_API_KEY (opt.)</text>
+  <text class="boxP" x="140" y="682">.env</text>
+
+  <rect class="box blue"  x="560"  y="600" width="360" height="150"/>
+  <text class="boxT" x="580" y="630">Despliegue</text>
+  <text class="boxP" x="580" y="658">Docker (python 3.12-slim)</text>
+  <text class="boxP" x="580" y="682">streamlit run app.py</text>
+
+  <rect class="box blue"  x="1000" y="600" width="360" height="150"/>
+  <text class="boxT" x="1020" y="630">Observabilidad</text>
+  <text class="boxP" x="1020" y="658">Logs Render/Actions • Healthchecks</text>
+  <text class="boxP" x="1020" y="682">Métricas básicas</text>
+
+  <!-- Conexiones -->
+  <!-- ARQUITECTURA (Filas 1 y 2) -->
+  <line class="conn" x1="480" y1="235" x2="560" y2="235"/>
+  <line class="conn" x1="920" y1="235" x2="1000" y2="235"/>
+  <path class="conn" d="M1180,310 L1180,350 L300,350 L300,380"/>
+  <line class="conn" x1="560" y1="455" x2="480" y2="455"/>   <!-- App → Postgres -->
+  <line class="conn" x1="1000" y1="455" x2="920" y2="455"/> <!-- Usuarios → App   -->
+
+  <!-- SOPORTE (red aislada) -->
+  <line class="conn" x1="480" y1="675" x2="560" y2="675"/>
+  <line class="conn" x1="920" y1="675" x2="1000" y2="675"/>
+
+  <text class="legend" x="800" y="900" text-anchor="middle">
+    Datos: APIs → Actions → ETL → Postgres · Interacción: Usuarios → App ← Postgres · Soporte (red aislada): Secrets → Despliegue → Observabilidad
+  </text>
+</svg>

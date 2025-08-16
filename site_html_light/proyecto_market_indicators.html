@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pipeline MP4 — Detalle del caso | Matías Formoso</title>
-  <meta name="description" content="Detalle del pipeline MP4: de texto a MP4 listo para publicar. Arquitectura, pasos, diferenciadores y captura de la interfaz (MVP)." />
+  <title>Market Indicators Dashboard — Detalle del caso | Matías Formoso</title>
+  <meta name="description" content="Detalle del Market Indicators Dashboard: ingesta automática con GitHub Actions, base de datos en Neon Postgres y visualización con Streamlit desplegado en Render." />
   <meta name="author" content="Matías Formoso" />
-  <meta property="og:title" content="Pipeline MP4 — Detalle del caso" />
-  <meta property="og:description" content="Arquitectura por etapas, reintentos, render por lotes, subtítulos e Interfaz MVP." />
+  <meta property="og:title" content="Market Indicators Dashboard — Detalle del caso" />
+  <meta property="og:description" content="Ingesta programada, Postgres gestionado, app Streamlit con KPIs, velas y normalización base 100." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="./assets/favicon.png" />
   <style>
@@ -110,13 +110,13 @@
   <!-- SUBHERO -->
   <header class="subhero">
     <div class="container">
-      <h1 class="title">Pipeline MP4 — Detalle del caso</h1>
-      <p class="subtitle">De texto plano a MP4 listo para publicar, con arquitectura modular, control de errores y estabilidad en render por lotes.</p>
+      <h1 class="title">Market Indicators Dashboard — Detalle del caso</h1>
+      <p class="subtitle">Seguimiento de activos con ingesta automática, base en Postgres y app Streamlit en Render. KPIs, velas OHLC y normalización base 100.</p>
 
       <div class="stack">
-        <span class="badge">Python</span><span class="badge">MoviePy</span><span class="badge">ffmpeg</span>
-        <span class="badge">pydub</span><span class="badge">Whisper</span><span class="badge">ElevenLabs</span>
-        <span class="badge">Pexels API</span><span class="badge">Mistral/Ollama</span><span class="badge">Streamlit</span>
+        <span class="badge">Python</span><span class="badge">Streamlit</span><span class="badge">Plotly</span>
+        <span class="badge">PostgreSQL (Neon)</span><span class="badge">GitHub Actions</span>
+        <span class="badge">Docker</span><span class="badge">Render</span><span class="badge">APIs (FMP/CoinGecko)</span>
       </div>
     </div>
   </header>
@@ -127,28 +127,26 @@
       <div class="card">
         <h2 class="section-h">Cómo funciona</h2>
         <ul class="list">
-          <li>▶ <b>Segmentación + cortes naturales:</b> Whisper en GPU local detecta subtítulos/pausas y agrupa semánticamente para generar bloques consistentes.</li>
-          <li>▶ <b>Narración por bloques:</b> ElevenLabs TTS con voz estable; se genera y sincroniza por fragmento para mayor precisión labial/temporal.</li>
-          <li>▶ <b>Queries visuales por IA:</b> Mistral (vía Ollama) produce prompts optimizados para el contexto y la coherencia visual de cada bloque.</li>
-          <li>▶ <b>Selección de clips:</b> API de Pexels filtrando por relación de aspecto, duración mínima y relevancia según el prompt.</li>
-          <li>▶ <b>Ensamblado de video:</b> MoviePy concatena por fragmento, aplica transiciones suaves y preserva encuadre para continuidad.</li>
-          <li>▶ <b>Mezcla de audio:</b> pydub combina narración + música con ducking automático y niveles compensados.</li>
-          <li>▶ <b>Subtítulos y salida:</b> genera .srt/.ass con estilos; corrección ortográfica y render final listo para publicar.</li>
-          <li>▶ <b>Costos y control:</b> procesamiento local (Whisper GPU + Mistral/Ollama) → costos reducidos y control total del sistema.</li>
+          <li>▶ <b>Jobs programados:</b> workflows de GitHub Actions ejecutan <i>hourly</i> y <i>daily</i> para traer precios y series históricas (FMP/CoinGecko).</li>
+          <li>▶ <b>Validación & transformaciones:</b> limpieza mínima, checks de consistencia y enriquecimiento básico.</li>
+          <li>▶ <b>Normalización y upsert:</b> idempotente en <b>Neon Postgres</b> (claves compuestas por símbolo, timestamp y granularidad).</li>
+          <li>▶ <b>UI de análisis:</b> Streamlit consulta por activo/rango/granularidad; opción de <b>base 100</b> para comparar curvas.</li>
+          <li>▶ <b>Visualización:</b> KPIs (precio, variación 24h, volumen, market cap) y gráfico principal (línea/área u OHLC).</li>
         </ul>
         <div class="stack">
-          <a class="btn" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura en alta</a>
+          <a class="btn primary" href="https://market-indicators-dashboard.onrender.com/" target="_blank" rel="noopener">Abrir demo</a>
+          <a class="btn" href="./assets/mid_infra.png" target="_blank" rel="noopener">Ver arquitectura en alta</a>
         </div>
       </div>
 
       <div class="card">
         <h2 class="section-h">Diferenciadores técnicos</h2>
         <ul class="list">
-          <li>Reintentos por fragmento y alternativas de query para asegurar cobertura visual 1:1.</li>
-          <li>Margen adicional para compensar fades y evitar pérdida de segundos visibles.</li>
-          <li>Render por lotes para estabilidad y uso eficiente de RAM/IO.</li>
-          <li>Corrección ortográfica de subtítulos y estilos/CTAs configurables.</li>
-          <li>Diseñado para escalar e integrar más fuentes y estilos de salida.</li>
+          <li><b>Free tier real:</b> web en Render + cron con <b>GitHub Actions</b>.</li>
+          <li><b>Modelo de datos simple:</b> claves compuestas para evitar duplicados.</li>
+          <li><b>Config por entorno:</b> variables <code>DATABASE_URL</code>, <code>FMP_API_KEY</code> (opcional) y otras <code>.env</code>.</li>
+          <li><b>Contenedor reproducible:</b> Dockerfile con <code>python:3.12-slim</code> y dependencias fijadas.</li>
+          <li><b>UX para análisis:</b> normalización base 100, presets de rango (1M/3M/1Y) y velas.</li>
         </ul>
       </div>
     </section>
@@ -156,26 +154,41 @@
     <section style="margin-top:22px">
       <div class="card">
         <h2 class="section-h">Arquitectura</h2>
-        <a class="media" href="./assets/arquitectura.png" target="_blank" rel="noopener">
-          <img src="./assets/arquitectura.png" alt="Arquitectura general del pipeline"/>
+        <a class="media" href="./assets/mid_infra.png" target="_blank" rel="noopener">
+          <img src="./assets/mid_infra.png" alt="Arquitectura del Market Indicators Dashboard (placeholder)" />
         </a>
-        <p class="caption">Etapas: entrada .txt → TTS/segmentación → búsqueda de clips → ensamblado → subtítulos → render.</p>
+        <p class="caption">GitHub Actions (cron) → ETL (Python) → Neon Postgres → App Streamlit en Render.</p>
+      </div>
+    </section>
+
+    <section style="margin-top:22px" class="grid cols-2">
+      <div class="card">
+        <h2 class="section-h">Flujo de datos</h2>
+        <a class="media" href="./assets/mid_flow.png" target="_blank" rel="noopener">
+          <img src="./assets/mid_flow.png" alt="Flujo de datos (placeholder)" />
+        </a>
+        <p class="caption">Jobs horaria/diaria → validación → upsert → consultas por rango/granularidad desde la UI.</p>
+      </div>
+
+      <div class="card">
+        <h2 class="section-h">Interfaz</h2>
+        <a class="media" href="./assets/mid_ui.png" target="_blank" rel="noopener">
+          <img src="./assets/mid_ui.png" alt="UI del dashboard (placeholder)" />
+        </a>
+        <p class="caption">Controles de activo + granularidad + rango, KPIs y gráfico principal (línea/velas).</p>
       </div>
     </section>
 
     <section style="margin-top:22px">
       <div class="card">
-        <h2 class="section-h">Interfaz MVP</h2>
-        <a class="media" href="./assets/ui_streamlit_mvp.png" target="_blank" rel="noopener">
-          <picture>
-            <source srcset="./assets/ui_streamlit_mvp.webp" type="image/webp">
-            <img src="./assets/ui_streamlit_mvp.png"
-                 alt="Interfaz MVP en Streamlit"
-                 width="1919" height="942"
-                 loading="lazy" decoding="async">
-          </picture>
-        </a>
-        <p class="caption">Vista de la herramienta: selección de orquestador, carga de .txt, ejecución automática y opciones de salida.</p>
+        <h2 class="section-h">Operación y despliegue</h2>
+        <ul class="list muted">
+          <li><b>Render (Web Service):</b> Docker + <code>EXPOSE 7860</code> + <code>streamlit run app.py</code>.</li>
+          <li><b>Neon Postgres:</b> instancia gratuita con <code>DATABASE_URL</code> como secret.</li>
+          <li><b>GitHub Actions:</b> workflows <i>hourly/daily</i> para ingesta sin depender de cron pago.</li>
+          <li><b>Secrets:</b> <code>DATABASE_URL</code>, <code>FMP_API_KEY</code> (si aplica) y otros.</li>
+          <li><b>Observabilidad:</b> logs en Actions/Render, validaciones básicas e idempotencia en inserts.</li>
+        </ul>
       </div>
     </section>
   </main>
