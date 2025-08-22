@@ -100,44 +100,28 @@
     .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
     .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
 
-    /* Diagrama antiguo por ID (compat), y genérico por clase .media */
-    #proyecto-diagrama .media{
-      border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38;
-      box-shadow:var(--shadow);
-    }
-    #proyecto-diagrama img{
-      width:100%; height:360px; object-fit:contain; background:#0e1a38;
-    }
+    /* Media wrappers */
+    #proyecto-diagrama .media,
     .media{
       border:1px solid #24315d; border-radius:12px; overflow:hidden; background:#0e1a38; box-shadow:var(--shadow);
     }
+    #proyecto-diagrama img,
     .media img{width:100%; height:360px; object-fit:contain; background:#0e1a38;}
 
     #contacto .card{padding-bottom:28px;}
     #contacto .stack{margin-top:14px;}
     section{scroll-margin-top:calc(var(--navH) + 14px)}
 
-    /* Responsive */
-    @media (max-width: 860px){
-      .nav-toggle{display:inline-flex; align-items:center; justify-content:center}
-      .nav-inner{position:relative}
-      .nav-links{
-        position:absolute; top:calc(var(--navH) - 6px); right:0;
-        display:none; flex-direction:column; align-items:stretch; gap:10px;
-        padding:12px; width:220px;
-        background:linear-gradient(180deg,rgba(18,25,53,.92),rgba(18,25,53,.85));
-        border:1px solid #24315d; border-radius:14px; box-shadow:var(--shadow);
-      }
-      .nav-links a{margin:0}
-      .nav-links.open{display:flex}
-      .top + header.hero .container{padding-top:14px}
-      .nav-links a { display:block; padding:8px 10px; }
-      .nav-links .btn.small{
-        display:block; width:100%; margin:0; text-align:center; justify-content:center;
-        padding:10px 12px; box-sizing:border-box;
-      }
-      .media img{height:auto; max-height:260px;}
+    /* Sticky CTA (mobile) */
+    .mobile-cta{
+      position:fixed; left:14px; right:14px; bottom:14px; z-index:60;
+      display:none; gap:10px; padding:8px;
+      background:linear-gradient(180deg,rgba(18,25,53,.92),rgba(18,25,53,.86));
+      border:1px solid #24315d; border-radius:14px; box-shadow:var(--shadow);
+      backdrop-filter:blur(8px);
     }
+
+    /* Responsive */
     @media (max-width: 900px) {
       .container { padding: 16px; }
       header.hero { min-height: clamp(380px, 56vh, 520px); padding-top: 12px; }
@@ -145,6 +129,8 @@
       .avatar { width: 72px; height: 72px; }
       .title { font-size: clamp(26px, 8vw, 36px); }
       .subtitle { font-size: clamp(15px, 4.2vw, 20px); }
+      /* sin imagen pesada en mobile: solo degradé */
+      header.hero::before{ background-image: linear-gradient(120deg, rgba(11,16,32,.88), rgba(11,16,32,.58)); }
     }
     @media (max-width: 680px) {
       .btn { padding: 10px 14px; }
@@ -156,6 +142,10 @@
       .card p.muted{line-height:1.45}
       .list{gap:6px}
       section{margin-top:20px !important}
+      .profile{display:none}          /* avatar fuera del hero en mobile */
+      .mobile-cta{display:flex}
+      body{padding-bottom:88px}       /* espacio para que no tape contenido */
+      .media img{height:auto; max-height:260px;}
     }
     @media (max-width: 480px) {
       .pill { font-size: 11px; padding: 5px 10px; }
@@ -167,6 +157,7 @@
       .card p.muted{font-size:14px}
     }
 
+    .link-cv{display:inline-block;margin-top:6px;font-size:14px;color:#cfe0ff;opacity:.9}
     .foot{
       display:flex; gap:10px; justify-content:space-between; align-items:center;
       border-top:1px solid #1c2550; padding:18px 0; margin-top:28px; font-size:14px;
@@ -198,32 +189,37 @@
   <header class="hero">
     <div class="container hero-inner">
       <div>
-        <span class="pill">Software Engineer · Arquitectura · Datos · Integraciones</span>
+        <!-- chip removido (menos ruido). Si querés, reactivá la pill -->
+        <!-- <span class="pill">Software Engineer · Arquitectura · Datos · Integraciones</span> -->
+
         <div class="profile">
-          <img class="avatar" src="./assets/perfil.png" alt="Matías Formoso" />
+          <img class="avatar" src="./assets/perfil.png" alt="Matías Formoso" width="96" height="96" loading="lazy" />
           <div>
             <div style="font-weight:700">Matías Agustín Formoso</div>
             <div class="muted">Software Engineer — arquitectura, datos e integraciones</div>
           </div>
         </div>
-        <h1 class="title">Software Engineer — arquitectura, datos e integraciones.</h1>
-        <p class="subtitle">Diseño y construyo soluciones que conectan datos, integran servicios y automatizan procesos con foco en <b>calidad</b>, <b>mantenibilidad</b> y <b>resultados</b>.</p>
-        <div class="stack">
-          <a class="btn primary" href="#servicios">Ver servicios</a>
-          <a class="btn" href="#contacto">Hablemos</a>
-          <a class="btn" href="./assets/CV_Matias_Formoso.pdf" target="_blank" rel="noopener">Descargar CV</a>
+
+        <h1 class="title">Arquitectura, datos e integraciones para productos mantenibles.</h1>
+        <p class="subtitle">Diseño y construyo soluciones que conectan datos e integran servicios con foco en <b>calidad</b>, <b>mantenibilidad</b> y <b>resultados</b>.</p>
+
+        <div class="stack" aria-label="Acciones principales">
+          <a class="btn primary" href="#contacto">Hablemos</a>
+          <a class="btn" href="#servicios">Ver servicios</a>
         </div>
-        <p class="caption">Abierto a colaborar en proyectos donde la tecnología simplifique lo importante.</p>
+        <a class="link-cv" href="./assets/CV_Matias_Formoso.pdf" target="_blank" rel="noopener">Descargar CV</a>
+
+        <p class="caption">Disponible para proyectos donde la tecnología simplifique lo importante.</p>
       </div>
 
       <div class="card">
         <h3 class="section-h">Qué hago</h3>
         <ul class="list">
-          <li>▶ <b>Arquitectura & Sistemas:</b> diseño modular, configuración por entorno, observabilidad.</li>
-          <li>▶ <b>Datos & ETL/BI:</b> ingesta, modelado relacional, SQL robusto y tableros claros.</li>
-          <li>▶ <b>Integraciones & APIs:</b> servicios REST, OAuth2, webhooks y orquestación.</li>
-          <li>▶ <b>Aplicaciones web:</b> MVPs en React/Streamlit para validar rápido.</li>
-          <li>▶ <b>IA aplicada:</b> ASR/NLP y automatizaciones reproducibles con evaluación offline.</li>
+          <li><b>Arquitectura & Sistemas:</b> diseño modular, configuración por entorno, observabilidad.</li>
+          <li><b>Datos & ETL/BI:</b> ingesta, modelado relacional, SQL robusto y tableros claros.</li>
+          <li><b>Integraciones & APIs:</b> REST, OAuth2, webhooks y orquestación.</li>
+          <li><b>Aplicaciones web:</b> MVPs en React/Streamlit para validar rápido.</li>
+          <li><b>IA aplicada:</b> ASR/NLP y automatizaciones con evaluación offline.</li>
         </ul>
         <div class="stack" style="margin-top:14px">
           <span class="badge">Python</span>
@@ -236,9 +232,6 @@
           <span class="badge">Docker</span>
           <span class="badge">Git/GitHub</span>
           <span class="badge">Arquitectura</span>
-          <span class="badge">Patrones</span>
-          <span class="badge">Scrum</span>
-          <span class="badge">Análisis de negocio</span>
         </div>
       </div>
     </div>
@@ -276,7 +269,7 @@
     <section id="casos" style="margin-top:20px">
       <h2 class="section-h">Casos</h2>
 
-      <!-- Caso 1 (más valor profesional): Market Indicators Dashboard -->
+      <!-- Caso 1 -->
       <div class="grid cols-2" style="margin-top:10px">
         <div class="card">
           <h2 class="section-h">Market Indicators Dashboard</h2>
@@ -289,7 +282,7 @@
           <ul class="list" style="margin-top:10px">
             <li><b>Stack:</b> Python, Streamlit, PostgreSQL (Neon), GitHub Actions, Render, APIs de datos (FMP / CoinGecko).</li>
             <li><b>Arquitectura:</b> Ingesta programada → validación/transf. → tablas <code>precios</code> e <code>historial</code> → app.</li>
-            <li><b>DevOps:</b> contenedor Docker, variables de entorno y <i>healthchecks</i>. Operación continua con cron jobs vía Actions.</li>
+            <li><b>Operación continua:</b> contenedor Docker, env vars, healthchecks y cron jobs vía Actions.</li>
           </ul>
           <div class="stack" style="margin-top:12px">
             <a class="btn primary" href="./proyecto_market_indicators.html" target="_blank" rel="noopener">Ver más sobre este proyecto</a>
@@ -300,13 +293,13 @@
 
         <div class="card">
           <a href="./assets/mid_infra.png" target="_blank" rel="noopener" class="media">
-            <img src="./assets/mid_infra.png" alt="Infraestructura del Market Indicators Dashboard" />
+            <img src="./assets/mid_infra.png" alt="Infraestructura del Market Indicators Dashboard" loading="lazy" />
           </a>
           <p class="caption">GitHub Actions (ingesta) → Neon Postgres → Streamlit en Render. Variables y Docker.</p>
         </div>
       </div>
 
-      <!-- Caso 2: Pipeline MP4 -->
+      <!-- Caso 2 -->
       <div class="grid cols-2" style="margin-top:20px">
         <div class="card">
           <h2 class="section-h">Pipeline MP4 end-to-end a partir de texto</h2>
@@ -329,7 +322,7 @@
 
         <div class="card">
           <a href="./assets/arquitectura.png" target="_blank" rel="noopener" class="media">
-            <img src="./assets/arquitectura.png" alt="Arquitectura del pipeline MP4"/>
+            <img src="./assets/arquitectura.png" alt="Arquitectura del pipeline MP4" loading="lazy"/>
           </a>
           <p class="caption">Entrada .txt → TTS/segmentación → búsqueda de clips → ensamblado → subtítulos → render final.</p>
         </div>
@@ -483,12 +476,18 @@
         <p class="muted">¿Tenés una idea o un problema concreto? Enviame un mensaje con una línea de contexto y respuesta ideal.</p>
         <div class="stack">
           <a class="btn primary" href="mailto:formosomatiasagustin@gmail.com?subject=Contacto%20desde%20web&body=Hola%20Matias,%20tengo%20esta%20idea...">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/matías-agustín-formoso-361987290" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://www.linkedin.com/in/matias-agustin-formoso-361987290" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="#" onclick="return false;" title="(no disponible)"><del>WhatsApp</del></a>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Sticky CTA visible sólo en mobile -->
+  <div class="mobile-cta" role="region" aria-label="Acciones rápidas en mobile">
+    <a class="btn primary" href="#contacto">Hablemos</a>
+    <a class="btn" href="#servicios">Ver servicios</a>
+  </div>
 
   <footer class="container">
     <div class="foot">
