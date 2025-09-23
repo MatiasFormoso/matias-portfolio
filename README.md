@@ -10,7 +10,7 @@ https://matiasformoso.vercel.app
 
 ---
 
-## Capturas
+## ScreenShot
 
 ### Home
 ![Home](./site/assets/home.png)
