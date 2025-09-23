@@ -34,7 +34,6 @@
     .btn.primary{background:linear-gradient(180deg,#7aa2ff,#5c8df7);border-color:#5c8df7;color:#08122b}
     .btn.small{padding:10px 14px;font-size:clamp(14px,3.8vw,14px)}
 
-    /* Estado deshabilitado para enlaces/botones de Pulso/WhatsApp */
     .btn[aria-disabled="true"], .btn.disabled{
       opacity:.55; cursor:not-allowed; filter:saturate(.7);
       text-decoration:none !important; transform:none !important; box-shadow:none !important;
@@ -69,7 +68,6 @@
     .list{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
     .stack{display:flex;flex-wrap:wrap;gap:10px}
 
-    /* NAV */
     nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,16,32,.85),rgba(11,16,32,.45));border-bottom:1px solid #1c2550}
     .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:10px 0;height:var(--navH)}
     .nav-links{display:flex;gap:16px;align-items:center}
@@ -81,7 +79,6 @@
     .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid #24315d;box-shadow:var(--shadow)}
     .profile{display:flex;align-items:center;gap:12px;margin:14px 0 6px}
 
-    /* HERO */
     header.hero{position:relative;overflow:hidden;border-bottom:1px solid #1c2550;min-height:clamp(420px,62vh,560px);display:flex;align-items:flex-start;padding-top:18px}
     .hero-inner{position:relative;z-index:1;display:grid;gap:16px;align-items:start;margin-top:0}
     @media(min-width:900px){.hero-inner{grid-template-columns:1.2fr .8fr}}
@@ -90,19 +87,17 @@
     .title{font-size:clamp(28px,5vw,44px);line-height:1.1;margin:8px 0}
     .subtitle{font-size:clamp(16px,3vw,22px);color:#cdd8ff;margin:10px 0 0}
 
-    /* Media */
     .media{border:1px solid #24315d;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#0e1a38,#0c1430);box-shadow:var(--shadow);padding:12px}
     .media img{width:100%;height:auto;display:block}
     .media.lg img{max-height:540px}
     @media (max-width:680px){.media.lg img{max-height:420px}}
 
-    /* Acordeones — más bajos y alineados a la izquierda */
     details.ac{
       border:1px solid #24315d;
       border-radius:12px;
-      padding:8px 12px;                            /* menos alto */
+      padding:8px 12px;
       background:linear-gradient(180deg,rgba(18,25,53,.52),rgba(18,25,53,.4));
-      box-shadow:none;                              /* sin sombra (menos “botón”) */
+      box-shadow:none;
       transition:border-color .15s, background .15s;
       cursor:pointer;
     }
@@ -115,19 +110,17 @@
       cursor:pointer;list-style:none;font-weight:700;color:#e7ecff;
       display:flex;align-items:center;justify-content:space-between
     }
-    details.ac summary .title{font-size:15px;margin:0}   /* un toque más compacto */
+    details.ac summary .title{font-size:15px;margin:0}
     details.ac summary::-webkit-details-marker{display:none}
     details.ac summary::after{content:"▾";font-size:16px;line-height:1;opacity:.9;transform:rotate(0deg);transition:transform .2s ease}
     details.ac[open] summary::after{transform:rotate(-180deg)}
     details.ac[open]{background:linear-gradient(180deg,rgba(18,25,53,.62),rgba(18,25,53,.48));border-color:#4b6bd1}
 
-    /* Certificaciones compacto */
     #certificaciones .grid{gap:14px}
     #certificaciones .card{padding:16px}
     #certificaciones .card h3{margin-bottom:6px}
     #certificaciones .card p{margin:6px 0}
 
-    /* ====== MOBILE ====== */
     @media (max-width:860px){
       .nav-toggle{display:inline-flex;align-items:center;justify-content:center}
       .nav-links{display:none !important}
@@ -159,7 +152,6 @@
     .foot{display:flex;gap:10px;justify-content:space-between;align-items:center;border-top:1px solid #1c2550;padding:16px 0;margin-top:24px;font-size:14px}
     @supports (padding:max(0px)) {.foot{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}}
 
-    /* ====== OVERLAY FULL-SCREEN ====== */
     .mobile-menu{
       position:fixed; inset:0; z-index:1000;
       display:flex; flex-direction:column;
@@ -334,9 +326,8 @@
         <div class="muted" style="margin-top:8px">Capacidad dedicada por horas para evolución continua: mejoras, soporte y pequeñas features.</div>
         <ul class="list" style="margin-top:8px"><li>• SLA acordado</li><li>• Roadmap vivo</li><li>• Reporte mensual</li></ul>
       </details>
-      <details class="ac"><summary><span class="title">Consultoría puntual</span></summary>
-        <div class="muted" style="margin-top:8px">Apoyo técnico para tu proyecto con recomendaciones accionables.</div>
-        <ul class="list" style="margin-top:8px"><li>• Resumen accionable</li><li>• Próximos pasos</li></ul>
+      <details class="ac"><summary><span class="title">Ayuda puntual</span></summary>
+        <div class="muted" style="margin-top:8px">Tiempo dedicado a un tema concreto.</div>
       </details>
     </section>
 
@@ -421,20 +412,23 @@
           <p class="muted">Enero 2025 · ID: 1063108</p>
           <p class="caption">Scrum · Metodologías ágiles</p>
           <div class="cred"><small>Credencial:</small>
-            <a href="https://www.scrumstudy.com/certification/verify?type=SFC&number=1063108" target="_blank" rel="noopener">Verificar SFC</a>
+            <a href="https://www.scrumstudy.com/certification/verify?type=SFC&number=1063108" target="_blank" rel="noopener">Ver credencial</a>
           </div>
         </div>
         <div class="card">
           <h3>Santander Open Academy • IA Generativa</h3>
           <p class="muted">Enero 2025 · ID: OA-2025-0107000725293</p>
           <p class="caption">Ética en IA · IA generativa · Análisis de sentimiento</p>
+          <div class="cred"><small>Credencial:</small>
+            <a href="./assets/106_formosomatiasagustin@gmail.com.pdf" target="_blank" rel="noopener">Ver credencial</a>
+          </div>
         </div>
         <div class="card">
           <h3>Google • Foundations: Data, Data, Everywhere</h3>
           <p class="muted">Enero 2025 · ID: EU5LNJIZLCE7</p>
           <p class="caption">Hojas de cálculo · Análisis de datos</p>
           <div class="cred"><small>Credencial:</small>
-            <a href="https://www.coursera.org/account/accomplishments/verify/EU5LNJIZLCE7" target="_blank" rel="noopener">Ver en Coursera</a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/EU5LNJIZLCE7" target="_blank" rel="noopener">Ver credencial</a>
           </div>
         </div>
         <div class="card">
@@ -442,7 +436,7 @@
           <p class="muted">Febrero 2025 · ID: LO7PWKIPCHK6</p>
           <p class="caption">Hojas de cálculo · Analítica de datos</p>
           <div class="cred"><small>Credencial:</small>
-            <a href="https://www.coursera.org/account/accomplishments/verify/LO7PWKIPCHK6" target="_blank" rel="noopener">Ver en Coursera</a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/LO7PWKIPCHK6" target="_blank" rel="noopener">Ver credencial</a>
           </div>
         </div>
         <div class="card">
@@ -450,7 +444,7 @@
           <p class="muted">Marzo 2025 · ID: DKVHCLLCJXP3</p>
           <p class="caption">Integridad y limpieza de datos · SQL</p>
           <div class="cred"><small>Credencial:</small>
-            <a href="https://www.coursera.org/account/accomplishments/verify/DKVHCLLCJXP3" target="_blank" rel="noopener">Ver en Coursera</a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/DKVHCLLCJXP3" target="_blank" rel="noopener">Ver credencial</a>
           </div>
         </div>
         <div class="card">
@@ -458,7 +452,7 @@
           <p class="muted">Marzo 2025 · ID: DIAT2YM7S567</p>
           <p class="caption">SQL · Hojas de cálculo · Análisis de datos</p>
           <div class="cred"><small>Credencial:</small>
-            <a href="https://www.coursera.org/account/accomplishments/verify/DIAT2YM7S567" target="_blank" rel="noopener">Ver en Coursera</a>
+            <a href="https://www.coursera.org/account/accomplishments/verify/DIAT2YM7S567" target="_blank" rel="noopener">Ver credencial</a>
           </div>
         </div>
       </div>
