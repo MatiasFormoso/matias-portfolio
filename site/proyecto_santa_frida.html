@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Santa Frida Farm — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="Sitio bilingüe ES/EN para exportador agro con SEO internacional, Next.js 14 y despliegue en producción." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status client">Entrega a cliente</span>
+      <h1 class="title">Santa Frida Farm — sitio bilingüe para exportación agro</h1>
+      <p class="subtitle">Presencia web profesional para un exportador de café y productos agro. Next.js 14, contenido bilingüe ES/EN, SEO internacional y despliegue en producción.</p>
+      <div class="stack">
+        <span class="badge">Next.js 14</span><span class="badge">TypeScript</span><span class="badge">SEO</span>
+        <span class="badge">i18n</span><span class="badge">Tailwind</span><span class="badge">Vercel</span>
+      </div>
+      <div class="stack" style="margin-top:16px">
+        <a class="btn primary" href="https://santafridafarm.com" target="_blank" rel="noopener">Ver sitio en vivo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">Santa Frida Farm es una finca cafetera colombiana orientada a exportación. Necesitaban un sitio que comunicara su propuesta de valor a compradores internacionales, con contenido en español e inglés y buena visibilidad en buscadores.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>Entregado y en producción</b> — sitio activo para el cliente.</li>
+          <li>▶ Contenido bilingüe con rutas/localización ES/EN.</li>
+          <li>▶ Enfoque en SEO técnico y performance para mercados externos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ Desarrollo end-to-end del sitio con <b>Next.js 14</b> y <b>TypeScript</b>.</li>
+          <li>▶ Estructura de contenido bilingüe (ES/EN) con metadata y URLs optimizadas.</li>
+          <li>▶ <b>SEO internacional:</b> Open Graph, sitemap, títulos/descripciones por idioma.</li>
+          <li>▶ Secciones de producto, historia de la finca, contacto y formularios.</li>
+          <li>▶ Optimización de imágenes y layout responsive para mobile-first.</li>
+          <li>▶ Despliegue y configuración en <b>Vercel</b>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Decisiones técnicas</h2>
+        <ul class="list">
+          <li><b>App Router de Next.js:</b> rutas por idioma y metadata dinámica por página.</li>
+          <li><b>SEO como requisito de negocio:</b> el cliente vende al exterior; visibilidad orgánica es clave.</li>
+          <li><b>Contenido estático donde aplica:</b> menor costo operativo y mejor performance.</li>
+          <li><b>Diseño limpio y profesional:</b> prioridad en legibilidad y confianza para compradores B2B.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">Next.js 14 · React · TypeScript · Tailwind CSS · next-intl (i18n) · Vercel</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

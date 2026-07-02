@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Primitivo Mates — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="E-commerce con integración Mercado Pago, webhooks HMAC, órdenes y stock. Next.js, Supabase. Proyecto discontinuado; experiencia técnica aplicable." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status archived">Discontinuado</span>
+      <h1 class="title">Primitivo Mates — e-commerce con Mercado Pago</h1>
+      <p class="subtitle">Tienda online de mates con checkout integrado, webhooks de pago y gestión de órdenes. El negocio se discontinuó; el deploy técnico demuestra la integración completa.</p>
+      <div class="stack">
+        <span class="badge">Next.js</span><span class="badge">TypeScript</span><span class="badge">Mercado Pago</span>
+        <span class="badge">Webhooks</span><span class="badge">Supabase</span><span class="badge">E-commerce</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">Primitivo Mates fue un emprendimiento de e-commerce para venta de mates artesanales. El desafío técnico principal fue integrar Mercado Pago de punta a punta: preferencias de pago, confirmación vía webhooks y actualización de stock/órdenes.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>Negocio discontinuado</b> — no es un e-commerce activo.</li>
+          <li>▶ La integración técnica (MP + webhooks) quedó implementada y desplegada.</li>
+          <li>▶ Experiencia aplicable a roles de integraciones y pagos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ Integración completa de <b>Mercado Pago</b> (SDK + API de preferencias).</li>
+          <li>▶ Endpoint de <b>webhooks</b> con validación <b>HMAC</b> para confirmación de pagos.</li>
+          <li>▶ Flujo de órdenes: creación, estados (pendiente/aprobado/rechazado) y notificaciones.</li>
+          <li>▶ Gestión de stock en <b>Supabase</b> (PostgreSQL) con actualización post-pago.</li>
+          <li>▶ Frontend <b>Next.js</b> con carrito, checkout y páginas de producto.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Decisiones técnicas</h2>
+        <ul class="list">
+          <li><b>Webhooks idempotentes:</b> reintentos de MP no duplican órdenes ni descuentan stock dos veces.</li>
+          <li><b>Validación HMAC:</b> rechazo de payloads no firmados por Mercado Pago.</li>
+          <li><b>Estados explícitos:</b> máquina de estados simple para trazabilidad de cada transacción.</li>
+          <li><b>Supabase como backend liviano:</b> sin servidor propio para MVP rápido.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">Next.js · TypeScript · Mercado Pago SDK · Supabase (PostgreSQL) · Webhooks · Tailwind CSS</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

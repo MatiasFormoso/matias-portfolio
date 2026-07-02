@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultia — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="Prototipo SaaS multi-tenant para consultorios: NestJS, Prisma, PostgreSQL, agenda y APIs REST con Swagger." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status proto">Prototipo / MVP</span>
+      <h1 class="title">Consultia — prototipo SaaS para consultorios</h1>
+      <p class="subtitle">Backend multi-tenant para gestión de agenda y pacientes. NestJS, Prisma, PostgreSQL y documentación Swagger. MVP sin clientes comerciales.</p>
+      <div class="stack">
+        <span class="badge">NestJS</span><span class="badge">TypeScript</span><span class="badge">Prisma</span>
+        <span class="badge">PostgreSQL</span><span class="badge">Swagger</span><span class="badge">JWT</span>
+        <span class="badge">Multi-tenant</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">Consultia nació como idea de SaaS para profesionales de la salud que necesitan gestionar agenda, pacientes y turnos sin depender de planillas. El foco del trabajo fue el diseño backend y la arquitectura multi-tenant, no la comercialización.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>Prototipo funcional</b> — sin clientes ni despliegue comercial.</li>
+          <li>▶ Sin suite de tests automatizados.</li>
+          <li>▶ Útil como demostración de capacidad backend y modelado de dominio.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ API REST con <b>NestJS</b> y <b>TypeScript</b>: módulos, guards y DTOs tipados.</li>
+          <li>▶ Modelado con <b>Prisma</b> y <b>PostgreSQL</b>: tenants, profesionales, pacientes y turnos.</li>
+          <li>▶ Lógica de agenda con detección de <b>conflictos de horario</b>.</li>
+          <li>▶ Autenticación <b>JWT</b> y aislamiento de datos por tenant.</li>
+          <li>▶ Documentación interactiva con <b>Swagger/OpenAPI</b>.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Decisiones técnicas</h2>
+        <ul class="list">
+          <li><b>Multi-tenant desde el diseño:</b> cada consultorio aislado por tenant_id en todas las queries.</li>
+          <li><b>NestJS por estructura:</b> módulos desacoplados facilitan escalar features (facturación, historias clínicas).</li>
+          <li><b>Prisma como ORM:</b> migraciones reproducibles y tipado end-to-end.</li>
+          <li><b>Swagger como contrato:</b> documentación viva para futuro frontend o integraciones.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">NestJS · TypeScript · Prisma · PostgreSQL · Swagger · JWT · class-validator</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

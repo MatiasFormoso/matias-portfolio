@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Matías Formoso — Ingeniería de Sistemas & Software</title>
-  <meta name="description" content="Ingeniería de sistemas y software a medida. Diseño y construyo soluciones que conectan datos, integran servicios y automatizan procesos con foco en calidad, mantenibilidad y resultados." />
+  <title>Matías Formoso — Desarrollador Full-Stack (Python · Next.js)</title>
+  <meta name="description" content="Desarrollador Full-Stack con entregas reales para clientes, prototipos de APIs e integraciones fiscales, y proyectos propios en Python y datos. Remoto LATAM, part-time." />
   <meta name="author" content="Matías Formoso" />
-  <meta property="og:title" content="Matías Formoso — Software Engineer" />
-  <meta property="og:description" content="Python • SQL • Integraciones • Arquitectura" />
+  <meta property="og:title" content="Matías Formoso — Full-Stack Developer" />
+  <meta property="og:description" content="Python · Next.js · APIs · Integraciones · IA con Cursor" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./assets/preview.png" />
   <meta name="theme-color" content="#0b1020" />
@@ -28,6 +28,11 @@
 
     .pill{display:inline-block;padding:6px 12px;border:1px solid #24315d;border-radius:999px;background:rgba(122,162,255,.08);color:#cfe0ff;font-size:12px;letter-spacing:.3px}
     .badge{display:inline-block;padding:6px 10px;border:1px solid #24315d;border-radius:999px;background:rgba(122,162,255,.06);color:#cfe0ff;font-size:12px}
+    .status{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.3px;margin-bottom:8px}
+    .status.client{background:rgba(52,211,153,.12);color:#86efac;border:1px solid rgba(52,211,153,.3)}
+    .status.own{background:rgba(122,162,255,.12);color:#cfe0ff;border:1px solid #365199}
+    .status.proto{background:rgba(251,191,36,.12);color:#fde68a;border:1px solid rgba(251,191,36,.3)}
+    .status.archived{background:rgba(148,163,184,.12);color:#cbd5e1;border:1px solid #475569}
 
     .btn{display:inline-flex;gap:10px;align-items:center;padding:12px 16px;border-radius:12px;border:1px solid #24315d;background:rgba(122,162,255,.08);color:#eaf1ff;font-weight:600;transition:transform .15s,box-shadow .15s;line-height:1}
     .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
@@ -194,9 +199,9 @@
         <span></span><span></span><span></span>
       </button>
       <div class="nav-links">
-        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
         <a href="#sobre-mi">Sobre mí</a>
-        <a class="btn small" href="#" aria-disabled="true" tabindex="-1" title="Próximamente">Pulso 09:00</a>
+        <a href="#como-trabajo">Cómo trabajo</a>
         <a class="btn small" href="#contacto">Contacto</a>
       </div>
     </div>
@@ -208,9 +213,9 @@
       <button class="mm-close" aria-label="Cerrar menú">✕</button>
     </div>
     <nav class="mm-links" role="menu">
-      <a href="#servicios" role="menuitem">Servicios</a>
+      <a href="#proyectos" role="menuitem">Proyectos</a>
       <a href="#sobre-mi" role="menuitem">Sobre mí</a>
-      <a class="btn" href="#" role="menuitem" aria-disabled="true" tabindex="-1" title="Próximamente">Pulso 09:00</a>
+      <a href="#como-trabajo" role="menuitem">Cómo trabajo</a>
       <a class="btn" href="#contacto" role="menuitem">Contacto</a>
     </nav>
   </aside>
@@ -219,85 +224,143 @@
     <div class="container hero-inner">
 
       <div>
-        <span class="pill">Software Engineer · Arquitectura · Datos · Integraciones</span>
+        <span class="pill">Full-Stack · Python · Next.js · APIs · Remoto LATAM</span>
         <div class="profile">
           <img class="avatar" src="./assets/perfil.png" alt="Matías Formoso" />
           <div>
             <div style="font-weight:700">Matías Agustín Formoso</div>
-            <div class="muted">Software Engineer — arquitectura, datos e integraciones</div>
+            <div class="muted">Desarrollador Full-Stack — entregas reales + prototipos técnicos</div>
           </div>
         </div>
-        <h1 class="title">Software Engineer — arquitectura, datos e integraciones.</h1>
-        <p class="subtitle">Diseño y construyo soluciones que conectan datos, integran servicios y automatizan procesos con foco en <b>calidad</b>, <b>mantenibilidad</b> y <b>resultados</b>.</p>
+        <h1 class="title">Desarrollador Full-Stack con entregas reales y criterio técnico.</h1>
+        <p class="subtitle">Construyo productos web end-to-end: <b>Next.js</b> para clientes, <b>Python</b> para datos y automatización, <b>APIs REST</b> e integraciones (pagos, fiscal). Uso <b>Cursor + IA</b> con comprensión real del stack, no solo prompts.</p>
         <div class="stack" style="margin-top:14px">
-          <a class="btn primary" href="#" aria-disabled="true" tabindex="-1" title="Próximamente">Probar Pulso 09:00</a>
-          <a class="btn" href="#servicios">Ver servicios</a>
+          <a class="btn primary" href="#proyectos">Ver proyectos</a>
+          <a class="btn" href="./assets/CV_Matias_Formoso.pdf" target="_blank" rel="noopener">Descargar CV</a>
         </div>
-        <p class="caption">Abierto a colaborar en proyectos donde la tecnología simplifique lo importante.</p>
+        <p class="caption">Disponible para roles remotos part-time en LATAM · Argentina (UTC-3)</p>
       </div>
 
       <div class="card">
-        <h3 class="section-h">Qué hago</h3>
+        <h3 class="section-h">Stack principal</h3>
         <ul class="list">
-          <li>▶ <b>Arquitectura & Sistemas</b>: diseño modular, configuración por entorno, observabilidad y logs estructurados.</li>
-          <li>▶ <b>Datos & ETL/BI</b>: ingesta, validación, modelado relacional y SQL robusto con tableros claros.</li>
-          <li>▶ <b>Integraciones & APIs</b>: REST/JSON, <b>OAuth2</b>, <b>webhooks</b>, jobs con reintentos e idempotencia.</li>
-          <li>▶ <b>Automatización</b>: orquestación (cron/Actions), notificaciones y reportes por WhatsApp/Email/Slack.</li>
-          <li>▶ <b>MVPs web</b>: Streamlit/React para validar rápido con UX simple.</li>
+          <li>▶ <b>Frontend:</b> Next.js 14/15, React, TypeScript, Tailwind, SEO e i18n.</li>
+          <li>▶ <b>Backend:</b> Python, NestJS/Hono, APIs REST, Prisma, PostgreSQL.</li>
+          <li>▶ <b>Integraciones:</b> Mercado Pago, webhooks HMAC, ARCA/AFIP (prototipo), Gmail API.</li>
+          <li>▶ <b>Datos:</b> ETL con Python, GitHub Actions, Streamlit, Neon Postgres.</li>
+          <li>▶ <b>IA & tooling:</b> Gemini, Cursor, automatización de pipelines personales.</li>
         </ul>
         <div class="stack" style="margin-top:10px">
-          <span class="badge">Python</span><span class="badge">Pandas</span><span class="badge">SQL</span><span class="badge">PostgreSQL</span>
-          <span class="badge">APIs</span><span class="badge">OAuth2</span><span class="badge">Webhooks</span><span class="badge">ETL</span>
-          <span class="badge">BI</span><span class="badge">GitHub Actions</span><span class="badge">Docker</span><span class="badge">Zapier/Make</span>
-          <span class="badge">WhatsApp Cloud API</span><span class="badge">Slack/Email</span><span class="badge">Shopify/Tiendanube</span><span class="badge">Google Sheets/CSV</span>
+          <span class="badge">Python</span><span class="badge">Next.js</span><span class="badge">TypeScript</span>
+          <span class="badge">PostgreSQL</span><span class="badge">APIs REST</span><span class="badge">Webhooks</span>
+          <span class="badge">ETL</span><span class="badge">Streamlit</span><span class="badge">Cursor</span>
+          <span class="badge">Gemini</span><span class="badge">Docker</span><span class="badge">Vercel</span>
         </div>
       </div>
     </div>
   </header>
 
   <main class="container">
-    <section id="servicios" style="margin-top:24px">
-      <h2 class="section-h">Soluciones a medida</h2>
+    <section id="proyectos" style="margin-top:24px">
+      <h2 class="section-h">Proyectos destacados</h2>
+      <p class="muted" style="margin-bottom:16px">Cada tarjeta enlaza a un caso de estudio con detalle técnico honesto sobre qué se hizo realmente.</p>
       <div class="grid cols-3">
 
         <div class="card">
-          <h3>Informes automáticos por WhatsApp</h3>
-          <p class="muted">Resumen diario de KPIs clave: <b>pedidos</b>, <b>ingresos</b>, <b>rechazados/pendientes</b> y <b>stock bajo</b>. Sin paneles. <b>Setup 24–48 h</b>.</p>
-          <ul class="list">
-            <li>• Canal: WhatsApp (opcional Email/Slack) + CSV</li>
-            <li>• Soporte: Shopify, Tiendanube, Woo, Sheets/CSV</li>
-            <li>• Calibración contra el panel</li>
-          </ul>
+          <span class="status client">Cliente</span>
+          <h3>EMC Jewelry</h3>
+          <p class="muted">Refactor e-commerce internacional con Next.js 15. Catálogo, carrito y checkout WhatsApp. En producción.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Next.js 15</span><span class="badge">TypeScript</span><span class="badge">Vercel</span>
+          </div>
           <div class="stack cta">
-            <a class="btn primary" href="#" aria-disabled="true" tabindex="-1" title="Próximamente">
-              Quiero implementarlo
-            </a>
+            <a class="btn primary" href="./proyecto_emc_jewelry.html">Ver caso</a>
+            <a class="btn" href="https://emcejewelry.com" target="_blank" rel="noopener">Sitio</a>
           </div>
         </div>
 
         <div class="card">
-          <h3>Integraciones & APIs</h3>
-          <p class="muted">REST/JSON, OAuth2, webhooks y jobs con reintentos. Documentación y tests básicos.</p>
-          <ul class="list">
-            <li>• REST/JSON</li>
-            <li>• OAuth2</li>
-            <li>• Webhooks</li>
-          </ul>
+          <span class="status client">Cliente</span>
+          <h3>Santa Frida Farm</h3>
+          <p class="muted">Sitio bilingüe ES/EN para exportador agro. SEO internacional, Next.js 14. En producción.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Next.js</span><span class="badge">SEO</span><span class="badge">i18n</span>
+          </div>
           <div class="stack cta">
-            <a class="btn" href="#contacto">Consultar</a>
+            <a class="btn primary" href="./proyecto_santa_frida.html">Ver caso</a>
+            <a class="btn" href="https://santafridafarm.com" target="_blank" rel="noopener">Sitio</a>
           </div>
         </div>
 
         <div class="card">
-          <h3>Datos & ETL</h3>
-          <p class="muted">Pipelines reproducibles con logging, validaciones y monitoreo. Modelado relacional y SQL sólido.</p>
-          <ul class="list">
-            <li>• Ingesta/limpieza</li>
-            <li>• Orquestación</li>
-            <li>• Tableros BI</li>
-          </ul>
+          <span class="status proto">Prototipo</span>
+          <h3>AFIP-REST / ARCA</h3>
+          <p class="muted">API REST (Hono) que abstrae web services ARCA/AFIP. Emisión de CAE en sandbox, multi-tenant.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Hono</span><span class="badge">TypeScript</span><span class="badge">Supabase</span>
+          </div>
           <div class="stack cta">
-            <a class="btn" href="#contacto">Consultar</a>
+            <a class="btn primary" href="./proyecto_afip_rest.html">Ver caso</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="status own">Propio</span>
+          <h3>Market Indicators Dashboard</h3>
+          <p class="muted">ETL con Python, GitHub Actions, Neon Postgres y dashboard Streamlit en Render.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Python</span><span class="badge">Streamlit</span><span class="badge">PostgreSQL</span>
+          </div>
+          <div class="stack cta">
+            <a class="btn primary" href="./proyecto_market_indicators.html">Ver caso</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="status own">Propio</span>
+          <h3>Agente de búsqueda laboral</h3>
+          <p class="muted">Pipeline Sabueso → Sastre → Cartero: scraping, CV tailoring con Gemini y cola de aprobación.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Python</span><span class="badge">Gemini</span><span class="badge">Streamlit</span>
+          </div>
+          <div class="stack cta">
+            <a class="btn primary" href="./proyecto_agente_laboral.html">Ver caso</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="status proto">Prototipo</span>
+          <h3>Consultia</h3>
+          <p class="muted">SaaS multi-tenant para consultorios. NestJS, Prisma, agenda y Swagger. MVP sin clientes.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">NestJS</span><span class="badge">Prisma</span><span class="badge">PostgreSQL</span>
+          </div>
+          <div class="stack cta">
+            <a class="btn primary" href="./proyecto_consultia.html">Ver caso</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="status archived">Discontinuado</span>
+          <h3>Primitivo Mates</h3>
+          <p class="muted">E-commerce con Mercado Pago, webhooks HMAC y gestión de órdenes. Negocio discontinuado.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Next.js</span><span class="badge">Mercado Pago</span><span class="badge">Webhooks</span>
+          </div>
+          <div class="stack cta">
+            <a class="btn primary" href="./proyecto_primitivo_mates.html">Ver caso</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <span class="status own">Propio</span>
+          <h3>Pipeline texto → MP4</h3>
+          <p class="muted">De un .txt a video: TTS, clips IA, subtítulos Whisper, ffmpeg y render automatizado.</p>
+          <div class="stack" style="margin-top:8px">
+            <span class="badge">Python</span><span class="badge">ffmpeg</span><span class="badge">Whisper</span>
+          </div>
+          <div class="stack cta">
+            <a class="btn primary" href="./proyect_txt_to_mp4.html">Ver caso</a>
           </div>
         </div>
 
@@ -307,28 +370,37 @@
     <section id="sobre-mi" style="margin-top:24px">
       <div class="card">
         <h2 class="section-h">Sobre mí</h2>
-        <p class="muted">Estudiante avanzado de Ingeniería en Sistemas de Información (Argentina). Me gusta resolver problemas reales con software simple y bien pensado. Aprendo rápido apoyándome en IA y documentación. Busco contextos donde pueda aportar desde lo técnico con visión de producto.</p>
+        <p class="muted">Estudiante avanzado de Ingeniería en Sistemas (UTN-FRC, Argentina). Desarrollo Full-Stack con foco en entregas reales: sitios para clientes en producción, prototipos de APIs e integraciones, y proyectos propios en Python y datos.</p>
+        <p class="muted" style="margin-top:10px">Trabajo con <b>Cursor + IA</b> de forma productiva: no reemplazo el criterio técnico, lo acelero. Entiendo arquitectura, debugging y trade-offs — la IA es una herramienta, no un atajo para vender humo.</p>
         <ul class="list" style="margin-top:10px">
-          <li class="kpi"><b>Python + SQL</b> · backend, datos y automatización</li>
-          <li class="kpi"><b>Infra & DevOps</b> · Docker, env vars, healthchecks, cron jobs</li>
-          <li class="kpi"><b>Front rápido</b> · Streamlit/React para MVPs</li>
+          <li class="kpi"><b>Full-Stack web</b> · Next.js, TypeScript, entregas para clientes internacionales</li>
+          <li class="kpi"><b>Backend & APIs</b> · Python, NestJS/Hono, REST, webhooks, integraciones fiscales</li>
+          <li class="kpi"><b>Datos & automatización</b> · ETL, Streamlit, pipelines con IA, agentes personales</li>
         </ul>
       </div>
     </section>
 
-    <section id="modelos" style="margin-top:24px">
-      <h2 class="section-h">Modelos de colaboración</h2>
-      <details class="ac"><summary><span class="title">Proyecto cerrado</span></summary>
-        <div class="muted" style="margin-top:8px">Alcance definido, entregables y fecha clara. Ideal para una solución puntual con especificación concreta.</div>
-        <ul class="list" style="margin-top:8px"><li>• Documento de alcance</li><li>• Hitos y QA</li><li>• Entrega + handoff</li></ul>
-      </details>
-      <details class="ac"><summary><span class="title">Bolsa mensual</span></summary>
-        <div class="muted" style="margin-top:8px">Capacidad dedicada por horas para evolución continua: mejoras, soporte y pequeñas features.</div>
-        <ul class="list" style="margin-top:8px"><li>• SLA acordado</li><li>• Roadmap vivo</li><li>• Reporte mensual</li></ul>
-      </details>
-      <details class="ac"><summary><span class="title">Ayuda puntual</span></summary>
-        <div class="muted" style="margin-top:8px">Tiempo dedicado a un tema concreto.</div>
-      </details>
+    <section id="como-trabajo" style="margin-top:24px">
+      <div class="card">
+        <h2 class="section-h">Cómo trabajo</h2>
+        <ul class="list">
+          <li>▶ <b>Cursor + IA con criterio:</b> uso agentes para acelerar implementación, tests y refactors; reviso cada diff y entiendo lo que shippeo.</li>
+          <li>▶ <b>Honestidad técnica:</b> diferencio entregas a cliente, prototipos/MVP y proyectos discontinuados — sin inflar métricas ni inventar tracción.</li>
+          <li>▶ <b>Entrega end-to-end:</b> desde modelado y API hasta deploy (Vercel, Render, Docker) y documentación mínima útil.</li>
+          <li>▶ <b>Integraciones como core skill:</b> webhooks idempotentes, manejo de errores de terceros, ambientes sandbox/producción.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="disponibilidad" style="margin-top:24px">
+      <div class="card">
+        <h2 class="section-h">Disponibilidad</h2>
+        <p class="muted">Busco roles <b>remotos part-time</b> en LATAM (developer, full-stack, integraciones, data). Abierto a conversar sobre modalidad híbrida en Córdoba, Argentina.</p>
+        <div class="stack" style="margin-top:12px">
+          <span class="badge">Remoto LATAM</span><span class="badge">Part-time</span><span class="badge">UTC-3</span>
+          <span class="badge">Inglés técnico (lectura)</span>
+        </div>
+      </div>
     </section>
 
     <section id="principios" style="margin-top:24px">
@@ -345,61 +417,38 @@
     </section>
 
     <section id="casos" style="margin-top:24px">
-      <h2 class="section-h">Casos</h2>
+      <h2 class="section-h">Arquitectura en detalle</h2>
+      <p class="muted" style="margin-bottom:12px">Diagramas y flujos de los proyectos con más profundidad técnica documentada.</p>
 
       <div class="grid cols-2" style="margin-top:10px">
         <div class="card">
-          <h2 class="section-h">Market Indicators Dashboard</h2>
-          <p class="muted">
-            Herramienta web gratuita para <b>seguimiento y análisis</b> de activos financieros (cripto y mercado),
-            con <b>ingesta automática</b> vía GitHub Actions, almacenamiento en <b>PostgreSQL</b> (Neon) y visualización
-            en una app <b>Streamlit</b> desplegada en Render. Controles de rango, granularidad y normalización
-            (base 100), además de KPIs y velas OHLC.
-          </p>
-          <ul class="list" style="margin-top:8px">
-            <li><b>Stack:</b> Python, Streamlit, PostgreSQL (Neon), GitHub Actions, Render, APIs de datos.</li>
-            <li><b>Arquitectura:</b> Ingesta programada → validación/transf. → tablas <code>precios</code> e <code>historial</code> → app.</li>
-            <li><b>DevOps:</b> Docker, variables de entorno y <i>healthchecks</i>. Operación continua con cron jobs vía Actions.</li>
-            <li><b>Resultados:</b> latencia &lt; 2 s, cero intervenciones diarias, datos normalizados comparables.</li>
-          </ul>
+          <h3>Market Indicators Dashboard</h3>
+          <p class="muted">Ingesta programada → Neon Postgres → Streamlit en Render. KPIs, velas OHLC y normalización base 100.</p>
           <div class="stack cta">
-            <a class="btn primary" href="./proyecto_market_indicators.html" target="_blank" rel="noopener">Ver más sobre este proyecto</a>
-            <a class="btn" href="./assets/mid_infra.png" target="_blank" rel="noopener">Ver arquitectura</a>
+            <a class="btn primary" href="./proyecto_market_indicators.html">Ver caso completo</a>
+            <a class="btn" href="./assets/mid_infra.png" target="_blank" rel="noopener">Diagrama</a>
           </div>
         </div>
-
         <div class="card">
           <a href="./assets/mid_infra.png" target="_blank" rel="noopener" class="media lg">
-            <img src="./assets/mid_infra.png" alt="Infraestructura del Market Indicators Dashboard" />
+            <img src="./assets/mid_infra.png" alt="Arquitectura Market Indicators Dashboard" />
           </a>
-          <p class="caption">GitHub Actions (ingesta) → Neon Postgres → Streamlit en Render.</p>
         </div>
       </div>
 
       <div class="grid cols-2" style="margin-top:16px">
         <div class="card">
-          <h2 class="section-h">Pipeline MP4 end-to-end a partir de texto</h2>
-          <p class="muted">
-            De un <code>.txt</code> a <b>MP4, completamente automático</b>: narración TTS, selección de clips por IA,
-            transiciones suaves, mezcla de música con ducking, subtítulos estilizados y limpieza automática.
-          </p>
-          <ul class="list" style="margin-top:8px">
-            <li><b>Stack:</b> Python (MoviePy, ffmpeg, pydub), Whisper, ElevenLabs, API de Pexels, Streamlit.</li>
-            <li><b>Retos:</b> sincronización audio-video, subtítulos limpios, <b>cobertura 1:1</b>, uso eficiente de RAM.</li>
-            <li><b>Soluciones:</b> procesamiento por lotes, lógica por fragmentos con reintentos, IA local, ducking y fades.</li>
-            <li><b>Resultados:</b> render estable &lt; 90 s para piezas cortas, subtítulos sincronizados y pipeline reejecutable.</li>
-          </ul>
+          <h3>Pipeline texto → MP4</h3>
+          <p class="muted">TTS → clips IA → ensamblado ffmpeg → subtítulos Whisper. Procesamiento por fragmentos con reintentos.</p>
           <div class="stack cta">
-            <a class="btn primary" href="./proyect_txt_to_mp4.html" target="_blank" rel="noopener">Ver más sobre este proyecto</a>
-            <a class="btn" href="./assets/arquitectura.png" target="_blank" rel="noopener">Ver arquitectura</a>
+            <a class="btn primary" href="./proyect_txt_to_mp4.html">Ver caso completo</a>
+            <a class="btn" href="./assets/arquitectura.png" target="_blank" rel="noopener">Diagrama</a>
           </div>
         </div>
-
         <div class="card">
           <a href="./assets/arquitectura.png" target="_blank" rel="noopener" class="media lg">
-            <img src="./assets/arquitectura.png" alt="Arquitectura del pipeline MP4"/>
+            <img src="./assets/arquitectura.png" alt="Arquitectura pipeline MP4"/>
           </a>
-          <p class="caption">Entrada .txt → TTS → clips → ensamblado → subtítulos → render.</p>
         </div>
       </div>
     </section>
@@ -461,11 +510,11 @@
     <section id="contacto" style="margin-top:24px">
       <div class="card">
         <h2 class="section-h">Contacto</h2>
-        <p class="muted">¿Tenés una idea o querés probar Pulso 09:00? Escribime y lo vemos.</p>
+        <p class="muted">¿Buscás un dev Full-Stack con entregas reales? Escribime con el rol o proyecto y vemos fit.</p>
         <div class="stack">
-          <a class="btn primary" href="mailto:formosomatiasagustin@gmail.com?subject=Contacto%20desde%20web&body=Hola%20Matias,%20tengo%20esta%20idea...">Email</a>
+          <a class="btn primary" href="mailto:formosomatiasagustin@gmail.com?subject=Contacto%20desde%20portfolio&body=Hola%20Matias,%20vi%20tu%20portfolio%20y...">Email</a>
           <a class="btn" href="https://www.linkedin.com/in/matías-agustín-formoso-361987290" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="#" aria-disabled="true" tabindex="-1" title="Próximamente">WhatsApp</a>
+          <a class="btn" href="./assets/CV_Matias_Formoso.pdf" target="_blank" rel="noopener">CV (PDF)</a>
         </div>
       </div>
     </section>

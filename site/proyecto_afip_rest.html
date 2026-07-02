@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AFIP-REST / ARCA — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="Prototipo de API REST con Hono y TypeScript para abstraer web services ARCA/AFIP: WSAA, WSFEv1, emisión de CAE y multi-tenant." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status proto">Prototipo / MVP</span>
+      <h1 class="title">AFIP-REST / ARCA — API REST de facturación electrónica</h1>
+      <p class="subtitle">Prototipo que abstrae los web services de ARCA/AFIP detrás de una API REST moderna. Hono, TypeScript, arca-sdk, Supabase y Lemon Squeezy para billing.</p>
+      <div class="stack">
+        <span class="badge">Hono</span><span class="badge">TypeScript</span><span class="badge">ARCA/AFIP</span>
+        <span class="badge">PostgreSQL</span><span class="badge">Supabase</span><span class="badge">API REST</span>
+        <span class="badge">X.509</span><span class="badge">Multi-tenant</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">Integrar con AFIP/ARCA implica SOAP, certificados X.509, ambientes sandbox/producción y manejo de errores fiscales poco amigables. El objetivo fue diseñar una capa REST que simplifique la emisión de comprobantes electrónicos para desarrolladores y SaaS.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>MVP en desarrollo</b> — sin clientes comerciales ni producción fiscal activa.</li>
+          <li>▶ Emisión de comprobantes con <b>CAE</b> validada en sandbox.</li>
+          <li>▶ Arquitectura pensada para multi-tenant y API keys por cliente.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ API REST con <b>Hono</b> y <b>TypeScript</b> sobre <b>arca-sdk</b> (WSAA + WSFEv1).</li>
+          <li>▶ Autenticación por <b>API key</b> y gestión de credenciales X.509 por tenant.</li>
+          <li>▶ Endpoints para emisión de facturas, consulta de último comprobante y manejo de errores fiscales.</li>
+          <li>▶ Persistencia en <b>PostgreSQL</b> vía <b>Supabase</b>: tenants, credenciales y logs de emisión.</li>
+          <li>▶ Diseño multi-tenant: aislamiento de datos y configuración por cliente.</li>
+          <li>▶ Integración con <b>Lemon Squeezy</b> para modelo de suscripción (pre-lanzamiento).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Decisiones técnicas</h2>
+        <ul class="list">
+          <li><b>Hono sobre Express:</b> runtime edge-friendly, tipado fuerte y middleware liviano.</li>
+          <li><b>SDK existente (arca-sdk):</b> no reinventar el protocolo SOAP; encapsular y exponer REST.</li>
+          <li><b>Sandbox first:</b> validar flujo completo de CAE antes de producción fiscal.</li>
+          <li><b>Errores fiscales mapeados:</b> respuestas HTTP claras en lugar de códigos AFIP crudos.</li>
+          <li><b>Secrets por tenant:</b> certificados y CUIT aislados en base de datos cifrada.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">Hono · TypeScript · arca-sdk · PostgreSQL (Supabase) · Lemon Squeezy · Node.js · Zod (validación)</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

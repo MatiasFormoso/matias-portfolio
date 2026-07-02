@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EMC Jewelry — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="Refactor y optimización de catálogo e-commerce internacional con Next.js 15, TypeScript y despliegue en Vercel." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status client">Entrega a cliente</span>
+      <h1 class="title">EMC Jewelry — catálogo e-commerce internacional</h1>
+      <p class="subtitle">Refactor y mejoras de performance en un sitio de joyería con catálogo, carrito local y checkout vía WhatsApp. Next.js 15, TypeScript y despliegue en Vercel.</p>
+      <div class="stack">
+        <span class="badge">Next.js 15</span><span class="badge">React</span><span class="badge">TypeScript</span>
+        <span class="badge">Tailwind CSS</span><span class="badge">Vercel</span><span class="badge">E-commerce</span>
+      </div>
+      <div class="stack" style="margin-top:16px">
+        <a class="btn primary" href="https://emcejewelry.com" target="_blank" rel="noopener">Ver sitio en vivo</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">EMC Jewelry es una marca de joyería con venta internacional. El sitio necesitaba un refactor técnico para mejorar performance, mantener el catálogo actualizado y ofrecer un flujo de compra simple sin pasarela integrada.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>Entregado y en producción</b> — sitio operativo para el cliente.</li>
+          <li>▶ Checkout vía <b>WhatsApp</b> (sin pasarela de pago en línea).</li>
+          <li>▶ Carrito gestionado en el cliente (localStorage).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ Refactor del frontend con <b>Next.js 15</b> y <b>TypeScript</b>: estructura de componentes, rutas y tipado.</li>
+          <li>▶ Optimización de <b>Core Web Vitals</b>: lazy loading, imágenes optimizadas y reducción de bundle.</li>
+          <li>▶ UI de catálogo con filtros, detalle de producto y carrito persistente.</li>
+          <li>▶ Flujo de checkout que genera mensaje estructurado para WhatsApp con el pedido.</li>
+          <li>▶ Despliegue continuo en <b>Vercel</b> con variables de entorno por ambiente.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Decisiones técnicas</h2>
+        <ul class="list">
+          <li><b>Sin backend propio:</b> catálogo estático/SSG donde aplica; carrito en cliente para simplicidad operativa.</li>
+          <li><b>WhatsApp como canal de cierre:</b> adecuado al modelo de negocio del cliente (venta consultiva).</li>
+          <li><b>Componentes reutilizables:</b> cards de producto, grids responsivos y layout consistente.</li>
+          <li><b>Performance first:</b> prioridad en LCP y CLS para audiencia mobile internacional.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">Next.js 15 · React 19 · TypeScript · Tailwind CSS · Vercel · ESLint</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

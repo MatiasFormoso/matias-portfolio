@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agente de búsqueda laboral — Caso de estudio | Matías Formoso</title>
+  <meta name="description" content="Sistema personal de automatización laboral: scraping, scoring con IA, CV tailoring y cola de aprobación. Python, Gemini, Streamlit." />
+  <link rel="icon" href="./assets/favicon.png" />
+  <link rel="stylesheet" href="./assets/case-study.css" />
+</head>
+<body>
+  <nav class="top" aria-label="Barra de navegación">
+    <div class="container nav-inner">
+      <a class="brand" href="./index.html">Matías Formoso</a>
+      <div class="nav-actions">
+        <a class="btn small" href="./index.html#proyectos">Volver al inicio</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subhero">
+    <div class="container">
+      <span class="status own">Proyecto propio</span>
+      <h1 class="title">Agente de búsqueda laboral — automatización con IA</h1>
+      <p class="subtitle">Pipeline Sabueso → Sastre → Cartero: descubre avisos, puntúa fit, genera CV y mail personalizados con Gemini, y gestiona envíos con cola de aprobación humana.</p>
+      <div class="stack">
+        <span class="badge">Python</span><span class="badge">Gemini</span><span class="badge">Streamlit</span>
+        <span class="badge">SQLite</span><span class="badge">Playwright</span><span class="badge">Gmail API</span>
+        <span class="badge">Cursor</span><span class="badge">Scraping</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Contexto</h2>
+        <p class="muted">Buscar trabajo de forma manual implica revisar decenas de avisos, adaptar CV y redactar mails uno por uno. Construí un agente personal que automatiza la parte repetitiva pero mantiene control humano antes de cada envío.</p>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Estado del proyecto</h2>
+        <ul class="list muted">
+          <li>▶ <b>En uso personal</b> — funcional para búsqueda activa de empleo.</li>
+          <li>▶ No es un producto comercial ni SaaS público.</li>
+          <li>▶ Desarrollo intensivo asistido con <b>Cursor</b> e IA.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="grid cols-2" style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Arquitectura (3 módulos)</h2>
+        <ul class="list">
+          <li>▶ <b>Sabueso:</b> scraping y filtrado de avisos (LinkedIn, GetOnBoard, etc.) con reglas de descarte (geo, modalidad, keywords).</li>
+          <li>▶ <b>Sastre:</b> scoring de fit + generación de CV HTML y mail con <b>Gemini</b>, usando catálogo de proyectos reales como fuente.</li>
+          <li>▶ <b>Cartero:</b> cola de aprobación, export PDF (Playwright) e integración <b>Gmail</b> para envío.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2 class="section-h">Qué hice</h2>
+        <ul class="list">
+          <li>▶ UI <b>Streamlit</b> con pestañas de revisión, exploración y barras de progreso.</li>
+          <li>▶ Base <b>SQLite</b> con historial de jobs, scores y paquetes generados.</li>
+          <li>▶ CV tailoring que reemplaza sección completa de proyectos según el aviso (no solo el resumen).</li>
+          <li>▶ Catálogo YAML de proyectos como fuente única de verdad para el Sastre.</li>
+          <li>▶ PDF export con Playwright (Chrome/Edge fallback) y browsers embebidos en el repo.</li>
+          <li>▶ Filtros agresivos: descarte de híbrido/presencial fuera de Argentina, fiscal Chile, etc.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top:20px">
+      <div class="card">
+        <h2 class="section-h">Stack</h2>
+        <p class="muted">Python 3.12 · Google Gemini · Streamlit · SQLite · Playwright · Gmail API · YAML · Cursor IDE</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot"><span>© <span id="y"></span> Matías Formoso</span></div>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
