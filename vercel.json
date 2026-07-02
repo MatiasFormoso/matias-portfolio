@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "name": "matiasformoso",
+  "buildCommand": null,
+  "outputDirectory": "site",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
